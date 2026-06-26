@@ -1895,7 +1895,7 @@ const db = {
 
 // ── AUTH — no login required by default ──
 // To enable PIN: localStorage.setItem('cc_access_pin','1234')
-function initAuth(){
+function _runAuthFlow(){
   const pin=localStorage.getItem('cc_access_pin');
   if(pin){
     document.getElementById('login-mode-label').textContent='// enter access code';
@@ -1903,6 +1903,17 @@ function initAuth(){
     setTimeout(()=>{ const el=document.getElementById('login-pin'); if(el) el.focus(); },100);
   } else {
     runBoot();
+  }
+}
+function initAuth(){
+  if(!localStorage.getItem('cc_tasks')){
+    fetch('https://raw.githubusercontent.com/MakayBrooks/grindspace/main/userdata.json')
+      .then(r=>r.ok?r.json():null)
+      .then(data=>{ if(data) Object.entries(data).forEach(([k,v])=>localStorage.setItem(k,JSON.stringify(v))); })
+      .catch(()=>{})
+      .finally(()=>_runAuthFlow());
+  } else {
+    _runAuthFlow();
   }
 }
 
