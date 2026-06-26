@@ -1163,8 +1163,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 <meta name="theme-color" content="#000000">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-512.png">
-<!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- no external auth library needed -->
 </head>
 <body>
 
@@ -1172,35 +1171,24 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 <div id="login-screen" style="display:none;position:fixed;inset:0;z-index:10000;background:#000;flex-direction:column;align-items:center;justify-content:center;">
   <div class="c c-tl"></div><div class="c c-tr"></div>
   <div class="c c-bl"></div><div class="c c-br"></div>
-  <div style="position:absolute;top:0;left:0;right:0;height:26px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;padding:0 20px;gap:16px;font-family:\'Share Tech Mono\',monospace;font-size:8px;color:rgba(255,255,255,.12);letter-spacing:3px;">
+  <div style="position:absolute;top:0;left:0;right:0;height:26px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;padding:0 20px;gap:16px;font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.12);letter-spacing:3px;">
     <div style="width:4px;height:4px;border-radius:50%;background:var(--red);box-shadow:0 0 6px var(--red);"></div>
-    <span>AUTHENTICATION REQUIRED</span>
+    <span>ACCESS REQUIRED</span>
     <span id="login-topbar-time" style="margin-left:auto;"></span>
   </div>
   <div style="width:100%;max-width:300px;padding:0 24px;display:flex;flex-direction:column;align-items:center;">
     <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:6px;margin-bottom:6px;text-align:center;">GRINDSPACE</div>
-    <div id="login-mode-label" style="font-family:\'Share Tech Mono\',monospace;font-size:9px;color:rgba(255,255,255,.2);letter-spacing:4px;margin-bottom:36px;">// authenticate</div>
-    <div style="width:100%;margin-bottom:14px;">
-      <div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:3px;margin-bottom:7px;">EMAIL</div>
-      <input id="login-email" type="email" autocomplete="email" placeholder="your@email.com"
-        style="width:100%;background:rgba(255,255,255,.025);border:none;border-bottom:1px solid rgba(255,255,255,.15);color:#fff;font-family:'Rajdhani',sans-serif;font-size:15px;padding:10px 12px;outline:none;box-sizing:border-box;"
-        onkeydown="if(event.key==='Enter')document.getElementById('login-password').focus()">
-    </div>
+    <div id="login-mode-label" style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);letter-spacing:4px;margin-bottom:36px;">// enter access code</div>
     <div style="width:100%;margin-bottom:28px;">
-      <div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:3px;margin-bottom:7px;">PASSWORD</div>
-      <input id="login-password" type="password" autocomplete="current-password" placeholder="••••••••"
-        style="width:100%;background:rgba(255,255,255,.025);border:none;border-bottom:1px solid rgba(255,255,255,.15);color:#fff;font-family:'Rajdhani',sans-serif;font-size:15px;padding:10px 12px;outline:none;box-sizing:border-box;"
-        onkeydown="if(event.key==='Enter')loginSubmit()">
+      <div style="font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:3px;margin-bottom:7px;">ACCESS CODE</div>
+      <input id="login-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="off" placeholder="••••"
+        style="width:100%;background:rgba(255,255,255,.025);border:none;border-bottom:1px solid rgba(255,255,255,.15);color:#fff;font-family:'Share Tech Mono',monospace;font-size:22px;padding:10px 12px;outline:none;box-sizing:border-box;text-align:center;letter-spacing:8px;"
+        onkeydown="if(event.key==='Enter')pinSubmit()">
     </div>
-    <div id="login-error" style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--red);letter-spacing:2px;margin-bottom:14px;min-height:16px;text-align:center;"></div>
-    <button id="login-submit" onclick="loginSubmit()"
-      style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);cursor:pointer;font-family:\'Share Tech Mono\',monospace;font-size:10px;letter-spacing:5px;padding:13px 48px;width:100%;transition:all .3s;margin-bottom:18px;">
+    <div id="login-error" style="font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--red);letter-spacing:2px;margin-bottom:14px;min-height:16px;text-align:center;"></div>
+    <button id="login-submit" onclick="pinSubmit()"
+      style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:5px;padding:13px 48px;width:100%;transition:all .3s;margin-bottom:18px;">
       enter
-    </button>
-    <button id="login-toggle" data-mode="login" onclick="toggleLoginMode()"
-      style="background:none;border:none;color:rgba(255,255,255,.15);cursor:pointer;font-family:\'Share Tech Mono\',monospace;font-size:8px;letter-spacing:3px;transition:color .2s;"
-      onmouseover="this.style.color='rgba(255,255,255,.4)'" onmouseout="this.style.color='rgba(255,255,255,.15)'">
-      first time? create account
     </button>
   </div>
   <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
@@ -1814,33 +1802,13 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 </div>
 
 <script>
-// ── SUPABASE ──
-const SUPA_URL='https://vewymyozgsfqqsqzvgcb.supabase.co';
-const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZld3lteW96Z3NmcXFzcXp2Z2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0ODMzOTksImV4cCI6MjA5ODA1OTM5OX0.HS7afK35-2l_MOXV38HN6kRMEH5_9sWPg4Rve6RnUCU';
-const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
-let currentUser=null;
-let db; // assigned after state vars
-
+// ── NO EXTERNAL AUTH — localStorage only —
+let currentUser=null; // kept for compat, always null
 // ── STATE ──
 const S = {
   load:(k,d)=>{ try{return JSON.parse(localStorage.getItem(k))??d}catch{return d} },
-  save:(k,v)=>{
-    localStorage.setItem(k,JSON.stringify(v));
-    if(currentUser&&db){
-      const map={
-        'cc_trades':        ()=>db.syncTrades(),
-        'cc_tasks':         ()=>db.syncTasks(),
-        'cc_goals':         ()=>db.syncGoals(),
-        'cc_journal_log':   ()=>db.syncJournal(),
-        'cc_day_notes':     ()=>db.syncDayNotes(),
-        'cc_task_template': ()=>db.syncTemplates(),
-        'cc_one_thing':     ()=>db.syncOneThings(),
-        'cc_daily_close':   ()=>db.syncDailyClose(),
-        'cc_monthly_target':()=>db.syncSettings(),
-      };
-      const fn=map[k]; if(fn) fn();
-    }
-  }
+  save:(k,v)=>{ localStorage.setItem(k,JSON.stringify(v)); }
+}
 };
 let tasks  = S.load('cc_tasks',  {});
 let goals  = S.load('cc_goals',  []);
@@ -1869,258 +1837,73 @@ const CAT_COLORS = {
 };
 function getCatColor(cat){ return CAT_COLORS[(cat||'').toLowerCase()] || 'rgba(255,255,255,0.1)'; }
 
-// ── DB SYNC ──
-db = {
-  uid:()=>currentUser?.id,
-
-  async syncTrades(){
-    if(!this.uid()) return;
-    const rows=trades.map((t,i)=>({
-      id:t.id, user_id:this.uid(),
-      date:t.date, ticker:t.ticker, direction:t.direction,
-      session:t.session, instrument:t.instrument, contracts:t.contracts,
-      rr:t.rr, pnl:t.pnl, outcome:t.outcome,
-      confluences:t.confluences, notes:t.notes,
-      screenshot:null, // screenshots stay local only (size)
-      conviction_rating:t.conviction_rating, execution_rating:t.execution_rating,
-      replay_note:t.replay_note, sort_order:i
-    })).filter(r=>r.id);
-    const ids=rows.map(r=>r.id);
-    if(ids.length){
-      await sb.from('trades').delete().eq('user_id',this.uid()).not('id','in',`(${ids.map(x=>`'${x}'`).join(',')})` );
-      await sb.from('trades').upsert(rows);
-    } else {
-      await sb.from('trades').delete().eq('user_id',this.uid());
-    }
-  },
-
-  async syncTasks(){
-    if(!this.uid()) return;
-    await sb.from('tasks').delete().eq('user_id',this.uid());
-    const rows=[];
-    Object.entries(tasks).forEach(([date_key,arr])=>{
-      (arr||[]).forEach((t,i)=>rows.push({
-        id:t.id||crypto.randomUUID(),
-        user_id:this.uid(), date_key,
-        text:t.text, done:!!t.done, sort_order:i
-      }));
-    });
-    if(rows.length) await sb.from('tasks').insert(rows);
-  },
-
-  async syncGoals(){
-    if(!this.uid()) return;
-    await sb.from('goals').delete().eq('user_id',this.uid());
-    const rows=goals.map((g,i)=>({
-      id:g.id||crypto.randomUUID(),
-      user_id:this.uid(),
-      name:g.name, category:g.category,
-      deadline:g.deadline||null, progress:g.progress||0, sort_order:i
-    }));
-    if(rows.length) await sb.from('goals').insert(rows);
-  },
-
-  async syncJournal(){
-    if(!this.uid()) return;
-    const rows=[];
-    Object.entries(journalLog).forEach(([date_key,entries])=>{
-      (entries||[]).forEach(e=>rows.push({
-        id:e.id, user_id:this.uid(), date_key, text:e.text, time:e.time
-      }));
-    });
-    if(rows.length) await sb.from('journal_entries').upsert(rows,{onConflict:'id'});
-  },
-
-  async syncDayNotes(){
-    if(!this.uid()) return;
-    const rows=Object.entries(dayNotes).map(([date_key,note])=>({
-      user_id:this.uid(), date_key, note:note||''
-    }));
-    if(rows.length) await sb.from('day_notes').upsert(rows,{onConflict:'user_id,date_key'});
-  },
-
-  async syncDailyClose(){
-    if(!this.uid()) return;
-    const rows=Object.entries(dailyClose).map(([date_key,dc])=>({
-      user_id:this.uid(), date_key,
-      rating:dc.rating||0, win:dc.win||'', lesson:dc.lesson||'', ts:dc.ts||null
-    }));
-    if(rows.length) await sb.from('daily_closes').upsert(rows,{onConflict:'user_id,date_key'});
-  },
-
-  async syncOneThings(){
-    if(!this.uid()) return;
-    const rows=Object.entries(oneThings).map(([date_key,text])=>({
-      user_id:this.uid(), date_key, text:text||''
-    }));
-    if(rows.length) await sb.from('one_things').upsert(rows,{onConflict:'user_id,date_key'});
-  },
-
-  async syncTemplates(){
-    if(!this.uid()) return;
-    await sb.from('task_templates').delete().eq('user_id',this.uid());
-    const rows=taskTemplate.map((text,i)=>({
-      id:crypto.randomUUID(), user_id:this.uid(), text, sort_order:i
-    }));
-    if(rows.length) await sb.from('task_templates').insert(rows);
-  },
-
-  async syncSettings(){
-    if(!this.uid()) return;
-    const target=parseFloat(localStorage.getItem('cc_monthly_target'))||0;
-    await sb.from('user_settings').upsert({user_id:this.uid(),monthly_target:target},{onConflict:'user_id'});
-  },
-
-  async loadAll(){
-    if(!this.uid()) return;
-    const uid=this.uid();
-    const [t,tk,g,j,dn,dc,ot,tt,ss]=await Promise.all([
-      sb.from('trades').select('*').eq('user_id',uid).order('sort_order'),
-      sb.from('tasks').select('*').eq('user_id',uid).order('sort_order'),
-      sb.from('goals').select('*').eq('user_id',uid).order('sort_order'),
-      sb.from('journal_entries').select('*').eq('user_id',uid).order('id'),
-      sb.from('day_notes').select('*').eq('user_id',uid),
-      sb.from('daily_closes').select('*').eq('user_id',uid),
-      sb.from('one_things').select('*').eq('user_id',uid),
-      sb.from('task_templates').select('*').eq('user_id',uid).order('sort_order'),
-      sb.from('user_settings').select('*').eq('user_id',uid).maybeSingle(),
-    ]);
-    if(t.data?.length) trades=t.data.map(r=>({
-      id:r.id,date:r.date,ticker:r.ticker,direction:r.direction,
-      session:r.session,instrument:r.instrument,contracts:r.contracts,
-      rr:r.rr,pnl:r.pnl,outcome:r.outcome,confluences:r.confluences,
-      notes:r.notes,screenshot:null,
-      conviction_rating:r.conviction_rating,execution_rating:r.execution_rating,
-      replay_note:r.replay_note
-    }));
-    if(tk.data?.length){
-      tasks={};
-      tk.data.forEach(r=>{
-        if(!tasks[r.date_key]) tasks[r.date_key]=[];
-        tasks[r.date_key].push({id:r.id,text:r.text,done:r.done});
-      });
-    }
-    if(g.data?.length) goals=g.data.map(r=>({
-      id:r.id,name:r.name,category:r.category,deadline:r.deadline,progress:r.progress||0
-    }));
-    if(j.data?.length){
-      journalLog={};
-      j.data.forEach(r=>{
-        if(!journalLog[r.date_key]) journalLog[r.date_key]=[];
-        journalLog[r.date_key].push({id:r.id,text:r.text,time:r.time});
-      });
-    }
-    if(dn.data?.length){ dayNotes={}; dn.data.forEach(r=>{dayNotes[r.date_key]=r.note;}); }
-    if(dc.data?.length){ dailyClose={}; dc.data.forEach(r=>{dailyClose[r.date_key]={rating:r.rating,win:r.win,lesson:r.lesson,ts:r.ts};}); }
-    if(ot.data?.length){ oneThings={}; ot.data.forEach(r=>{oneThings[r.date_key]=r.text;}); }
-    if(tt.data?.length) taskTemplate=tt.data.map(r=>r.text);
-    if(ss.data?.monthly_target) localStorage.setItem('cc_monthly_target',JSON.stringify(ss.data.monthly_target));
-  },
-
-  async migrateFromLocalStorage(){
-    try{
-      const lTrades=JSON.parse(localStorage.getItem('cc_trades')||'[]');
-      const lGoals=JSON.parse(localStorage.getItem('cc_goals')||'[]');
-      const lTasks=JSON.parse(localStorage.getItem('cc_tasks')||'{}');
-      const lJournal=JSON.parse(localStorage.getItem('cc_journal_log')||'{}');
-      const lDayNotes=JSON.parse(localStorage.getItem('cc_day_notes')||'{}');
-      const lDailyClose=JSON.parse(localStorage.getItem('cc_daily_close')||'{}');
-      const lOneThings=JSON.parse(localStorage.getItem('cc_one_thing')||'{}');
-      const lTemplates=JSON.parse(localStorage.getItem('cc_task_template')||'[]');
-      const hasData=lTrades.length||lGoals.length||Object.keys(lTasks).length||Object.keys(lJournal).length;
-      if(!hasData) return false;
-      lTrades.forEach(t=>{ if(!t.id) t.id=crypto.randomUUID(); });
-      lGoals.forEach(g=>{ if(!g.id) g.id=crypto.randomUUID(); });
-      Object.values(lTasks).forEach(arr=>arr.forEach(t=>{ if(!t.id) t.id=crypto.randomUUID(); }));
-      trades=lTrades; goals=lGoals; tasks=lTasks;
-      journalLog=lJournal; dayNotes=lDayNotes;
-      dailyClose=lDailyClose; oneThings=lOneThings; taskTemplate=lTemplates;
-      localStorage.setItem('cc_trades',JSON.stringify(trades));
-      localStorage.setItem('cc_goals',JSON.stringify(goals));
-      localStorage.setItem('cc_tasks',JSON.stringify(tasks));
-      await Promise.all([
-        this.syncTrades(),this.syncTasks(),this.syncGoals(),
-        this.syncJournal(),this.syncDayNotes(),this.syncDailyClose(),
-        this.syncOneThings(),this.syncTemplates(),this.syncSettings()
-      ]);
-      return true;
-    }catch(e){ console.warn('[grindspace] migration error:',e); return false; }
-  }
+// ── DB SYNC (stub — localStorage only) ──
+const db = {
+  uid:()=>null,
+  syncTrades:async function(){},
+  syncTasks:async function(){},
+  syncGoals:async function(){},
+  syncJournal:async function(){},
+  syncDayNotes:async function(){},
+  syncDailyClose:async function(){},
+  syncOneThings:async function(){},
+  syncTemplates:async function(){},
+  syncSettings:async function(){},
+  loadAll:async function(){},
+  migrateFromLocalStorage:async function(){ return false; }
 };
 
-// ── AUTH ──
-async function initAuth(){
-  try{
-    const { data:{ session } }=await sb.auth.getSession();
-    if(session){
-      currentUser=session.user;
-      try{ await db.loadAll(); }catch(e){ console.warn('[grindspace] db load failed, using localStorage:',e); }
+// ── AUTH — no login required by default ──
+// To enable PIN: localStorage.setItem('cc_access_pin','1234')
+function initAuth(){
+  const pin=localStorage.getItem('cc_access_pin');
+  if(pin){
+    document.getElementById('login-mode-label').textContent='// enter access code';
+    document.getElementById('login-screen').style.display='flex';
+    setTimeout(()=>{ const el=document.getElementById('login-pin'); if(el) el.focus(); },100);
+  } else {
+    runBoot();
+  }
+}
+
+function pinSubmit(){
+  const stored=localStorage.getItem('cc_access_pin');
+  const el=document.getElementById('login-pin');
+  const errEl=document.getElementById('login-error');
+  if(!stored){
+    const pin=(el?el.value:'').trim();
+    if(!pin||pin.length<4){ errEl.textContent='min 4 digits'; return; }
+    localStorage.setItem('cc_access_pin',pin);
+    document.getElementById('login-screen').style.display='none';
+    runBoot();
+  } else {
+    const entered=(el?el.value:'').trim();
+    if(entered===stored){
+      document.getElementById('login-screen').style.display='none';
+      if(el) el.value='';
       runBoot();
     } else {
-      document.getElementById('login-screen').style.display='flex';
+      errEl.textContent='incorrect code';
+      if(el) el.value='';
     }
-  }catch(e){
-    console.warn('[grindspace] auth error:',e);
-    document.getElementById('login-screen').style.display='flex';
   }
 }
 
-function toggleLoginMode(){
-  const btn=document.getElementById('login-toggle');
-  const sub=document.getElementById('login-submit');
-  const lbl=document.getElementById('login-mode-label');
-  if(btn.dataset.mode==='login'){
-    btn.dataset.mode='signup';
-    btn.textContent='already have an account? sign in';
-    sub.textContent='initialize';
-    lbl.textContent='// first time setup';
-  } else {
-    btn.dataset.mode='login';
-    btn.textContent='first time? create account';
-    sub.textContent='enter';
-    lbl.textContent='// authenticate';
-  }
-  document.getElementById('login-error').textContent='';
-}
-
-async function loginSubmit(){
-  const email=document.getElementById('login-email').value.trim();
-  const pwd=document.getElementById('login-password').value;
-  const isSignup=document.getElementById('login-toggle').dataset.mode==='signup';
-  const sub=document.getElementById('login-submit');
-  const errEl=document.getElementById('login-error');
-  if(!email||!pwd){ errEl.textContent='fields required'; return; }
-  sub.textContent='...'; sub.disabled=true; errEl.textContent='';
-  const { data, error }=isSignup
-    ? await sb.auth.signUp({email,password:pwd})
-    : await sb.auth.signInWithPassword({email,password:pwd});
-  if(error){
-    errEl.textContent=error.message;
-    sub.textContent=isSignup?'initialize':'enter';
-    sub.disabled=false; return;
-  }
-  currentUser=data.user;
-  try{ await db.loadAll(); }catch(e){ console.warn(e); }
-  const hasSupabaseData=trades.length||goals.length||Object.keys(tasks).length;
-  if(!hasSupabaseData){
-    const migrated=await db.migrateFromLocalStorage();
-    if(migrated) console.log('[grindspace] migrated localStorage \u2192 supabase');
-  }
-  document.getElementById('login-screen').style.display='none';
-  runBoot();
-}
-
-async function logoutUser(){
-  await sb.auth.signOut();
-  currentUser=null;
-  trades=[]; goals=[]; tasks={}; dayNotes={}; journalLog={};
-  taskTemplate=[]; oneThings={}; dailyClose={};
+function logoutUser(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const eds=document.getElementById('end-day-screen');
   if(eds) eds.classList.remove('active');
-  document.getElementById('login-screen').style.display='flex';
+  const pin=localStorage.getItem('cc_access_pin');
+  if(pin){
+    const errEl=document.getElementById('login-error');
+    if(errEl) errEl.textContent='';
+    const el=document.getElementById('login-pin');
+    if(el) el.value='';
+    document.getElementById('login-screen').style.display='flex';
+  } else {
+    runBoot();
+  }
 }
-
 // ── ARABIC NUMERALS ──
 const AR = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
 function toAr(s){ return String(s).replace(/[0-9]/g,d=>AR[d]); }
