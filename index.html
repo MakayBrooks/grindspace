@@ -1154,6 +1154,47 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   font-family:'Orbitron',sans-serif; font-size:20px; font-weight:700;
   margin:8px 0 4px;
 }
+
+/* ════════════════════════════════
+   MOBILE RESPONSIVE
+════════════════════════════════ */
+@media (max-width: 768px) {
+  .topnav { padding: 0 12px; height: 44px; }
+  .nav-brand { font-size: 13px; margin-right: 12px; }
+  .nav-btn { padding: 0 10px; font-size: 8px; letter-spacing: 2px; height: 44px; }
+  .nav-clock { display: none; }
+  .exit-btn { font-size: 7px; padding: 4px 8px; }
+  .main-content { padding: 14px 12px; }
+  .panel { padding: 14px 12px; }
+  .date-big { font-size: 18px; }
+  .l-clock { font-size: clamp(48px, 14vw, 80px); letter-spacing: 4px; }
+  .l-date { font-size: 8px; letter-spacing: 4px; }
+  .l-slogan { font-size: 7px; letter-spacing: 5px; }
+  .enter-btn { font-size: 9px; letter-spacing: 6px; width: 280px; }
+  .check-text { font-size: 13px; }
+  .goal-name { font-size: 13px; }
+  .dark-input { font-size: 13px; }
+  .c-label { display: none; }
+  /* HQ grid stacks on mobile */
+  .hq-grid { grid-template-columns: 1fr !important; }
+  /* Trading panels full width */
+  .trade-grid { grid-template-columns: 1fr !important; }
+  /* Wider modals */
+  .modal-inner { width: 95vw !important; max-width: 95vw !important; }
+  /* Nav links scroll horizontally */
+  .nav-links { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-shrink: 1; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  /* Boot screen */
+  #boot-screen { padding: 20px; }
+  /* Login PIN */
+  #login-pin { font-size: 18px; }
+}
+@media (max-width: 480px) {
+  .nav-btn { padding: 0 7px; font-size: 7px; letter-spacing: 1px; }
+  .main-content { padding: 10px 8px; }
+  .panel { padding: 12px 10px; }
+}
+
 </style>
 <!-- PWA -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -3095,6 +3136,7 @@ function typeSlogan(){
 // ── BOOT SEQUENCE ──
 let _bt=[];
 function runBoot(){
+  document.getElementById('sync-fab').style.display='block';
   const screen=document.getElementById('boot-screen');
   const linesEl=document.getElementById('boot-lines');
   const cursor=document.getElementById('boot-cursor');
@@ -3197,5 +3239,52 @@ function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').rep
 })();
 </script>
 <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
+
+<!-- ════ DATA SYNC PANEL ════ -->
+<div id="sync-fab" onclick="toggleSyncPanel()" style="display:none;position:fixed;bottom:24px;right:20px;z-index:9998;background:#111;border:1px solid rgba(255,255,255,.18);border-radius:2px;padding:9px 14px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,.4)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.18)';this.style.color='rgba(255,255,255,.5)'">SYNC</div>
+<div id="sync-panel" style="display:none;position:fixed;bottom:70px;right:20px;z-index:9998;background:#0a0a0a;border:1px solid rgba(255,255,255,.15);border-radius:2px;padding:20px;width:280px;">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:4px;color:rgba(255,255,255,.3);margin-bottom:16px;">DATA SYNC</div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);margin-bottom:10px;line-height:1.6;">Export copies all your data to clipboard. On another device, paste it in the Import box.</div>
+  <button onclick="exportData()" style="width:100%;background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;padding:10px;margin-bottom:10px;transition:all .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)'">EXPORT → COPY</button>
+  <textarea id="sync-import-box" placeholder="Paste exported data here..." style="width:100%;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.1);color:#fff;font-family:'Share Tech Mono',monospace;font-size:9px;padding:8px;resize:none;height:60px;outline:none;margin-bottom:8px;"></textarea>
+  <button onclick="importData()" style="width:100%;background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;padding:10px;transition:all .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)'">IMPORT ← PASTE</button>
+  <div id="sync-msg" style="font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--green);margin-top:8px;text-align:center;min-height:14px;"></div>
+</div>
+
+<script>
+function toggleSyncPanel(){
+  const p=document.getElementById('sync-panel');
+  p.style.display=p.style.display==='none'?'block':'none';
+}
+function exportData(){
+  const keys=['cc_trades','cc_tasks','cc_goals','cc_journal_log','cc_day_notes','cc_task_template','cc_one_thing','cc_daily_close','cc_monthly_target'];
+  const data={};
+  keys.forEach(k=>{ const v=localStorage.getItem(k); if(v) data[k]=JSON.parse(v); });
+  const json=JSON.stringify(data);
+  navigator.clipboard.writeText(json).then(()=>{
+    document.getElementById('sync-msg').textContent='copied to clipboard!';
+    setTimeout(()=>document.getElementById('sync-msg').textContent='',3000);
+  }).catch(()=>{
+    document.getElementById('sync-import-box').value=json;
+    document.getElementById('sync-msg').textContent='clipboard failed — copy from box above';
+  });
+}
+function importData(){
+  try{
+    const raw=document.getElementById('sync-import-box').value.trim();
+    if(!raw){ document.getElementById('sync-msg').textContent='paste data first'; return; }
+    const data=JSON.parse(raw);
+    Object.entries(data).forEach(([k,v])=>localStorage.setItem(k,JSON.stringify(v)));
+    document.getElementById('sync-msg').textContent='imported! reloading...';
+    setTimeout(()=>location.reload(),1200);
+  }catch(e){
+    document.getElementById('sync-msg').textContent='invalid data';
+  }
+}
+// Show SYNC fab only when inside the app
+const _origRunBoot = typeof runBoot === 'function' ? runBoot : null;
+function showSyncFab(){ document.getElementById('sync-fab').style.display='block'; }
+</script>
+
 </body>
 </html>
