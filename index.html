@@ -1808,7 +1808,6 @@ let currentUser=null; // kept for compat, always null
 const S = {
   load:(k,d)=>{ try{return JSON.parse(localStorage.getItem(k))??d}catch{return d} },
   save:(k,v)=>{ localStorage.setItem(k,JSON.stringify(v)); }
-}
 };
 let tasks  = S.load('cc_tasks',  {});
 let goals  = S.load('cc_goals',  []);
