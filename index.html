@@ -3136,7 +3136,6 @@ function typeSlogan(){
 // ── BOOT SEQUENCE ──
 let _bt=[];
 function runBoot(){
-  document.getElementById('sync-fab').style.display='block';
   const screen=document.getElementById('boot-screen');
   const linesEl=document.getElementById('boot-lines');
   const cursor=document.getElementById('boot-cursor');
@@ -3252,6 +3251,7 @@ function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').rep
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.getElementById('sync-fab');if(f)f.style.display='block';});
 function toggleSyncPanel(){
   const p=document.getElementById('sync-panel');
   p.style.display=p.style.display==='none'?'block':'none';
