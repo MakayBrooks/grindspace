@@ -1291,7 +1291,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   </div>
 
   <div class="l-content">
-    <div class="l-clock" id="landing-clock">Ù Ù :Ù Ù :Ù Ù </div>
+    <div class="l-clock" id="landing-clock">٠٠:٠٠:٠٠</div>
     <div class="l-date" id="landing-date">â</div>
     <div class="l-live-row"><div class="l-live-dot"></div><span>live</span></div>
     <div class="l-divider"></div>
@@ -1925,6 +1925,18 @@ function _runAuthFlow(){
     runBoot();
   }
 }
+
+// one-time migration: move wrong-date close to June 26
+(function(){
+  try{
+    const dc=JSON.parse(localStorage.getItem('cc_daily_close')||'{}');
+    if(dc['2026-06-27']&&!dc['2026-06-26']){
+      dc['2026-06-26']=dc['2026-06-27'];
+      delete dc['2026-06-27'];
+      localStorage.setItem('cc_daily_close',JSON.stringify(dc));
+    }
+  }catch(e){}
+})();
 function initAuth(){
   if(!localStorage.getItem('cc_tasks')){
     fetch('https://raw.githubusercontent.com/MakayBrooks/grindspace/main/userdata.json')
@@ -1976,7 +1988,7 @@ function logoutUser(){
   }
 }
 // ââ ARABIC NUMERALS ââ
-const AR = {'0':'Ù ','1':'Ù¡','2':'Ù¢','3':'Ù£','4':'Ù¤','5':'Ù¥','6':'Ù¦','7':'Ù§','8':'Ù¨','9':'Ù©'};
+const AR = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
 function toAr(s){ return String(s).replace(/[0-9]/g,d=>AR[d]); }
 
 // ââ CLOCKS ââ
@@ -2104,7 +2116,7 @@ function renderVault(){
         ${dayTrades.map(t=>`<div class="vault-trade-row">
           <span style="font-family:'Orbitron',sans-serif;font-size:10px;color:#fff;">${esc(t.ticker||'â')}</span>
           <span class="tag tag-${t.direction==='LONG'?'long':'short'}" style="font-size:8px;padding:1px 6px;">${t.direction}</span>
-          <span>${esc(t.instrument||'')} Ã${t.contracts||1}</span>
+          <span>${esc(t.instrument||'')} ×${t.contracts||1}</span>
           ${t.rr!=null?`<span>${t.rr}:1</span>`:''}
           <span style="color:${(t.pnl||0)>=0?'var(--green)':'var(--red)'};">${fmt(t.pnl||0)}</span>
           ${t.execution_rating?`<span>${'â'.repeat(t.execution_rating)}</span>`:''}
@@ -2233,7 +2245,7 @@ function renderGoals(){
   el.innerHTML=goals.map((g,i)=>{
     const isOpen = openGoalIdx===i;
     const cat = (g.category||'').toLowerCase();
-    const dl  = g.deadline ? ' Â· ' + g.deadline : '';
+    const dl  = g.deadline ? ' · ' + g.deadline : '';
     return `
     <div class="goal-item${isOpen?' open':''}" id="goal-item-${i}" draggable="true" ondragstart="goalDragStart(${i})" ondragover="goalDragOver(event,this)" ondragleave="goalDragLeave(this)" ondrop="goalDrop(event,${i})" onclick="toggleGoal(${i})" style="border-left:3px solid ${getCatColor(g.category)};">
       <div class="goal-top">
@@ -2463,7 +2475,7 @@ function saveTrade(){
     <span style="font-size:13px;font-family:'Orbitron',sans-serif;color:#fff;">${esc(trade.ticker)}</span>
     <span class="tag tag-${dir==='LONG'?'long':'short'}">${dir}</span>
     <span style="color:var(--text-dim);font-size:11px;">${esc(trade.session)}</span>
-    <span style="color:var(--text-dim);font-size:11px;">${esc(trade.instrument)} Ã ${trade.contracts}</span>
+    <span style="color:var(--text-dim);font-size:11px;">${esc(trade.instrument)} × ${trade.contracts}</span>
     ${rrDisp?`<span style="color:var(--text-dim);font-size:11px;">${rrDisp}</span>`:''}
     <span style="margin-left:auto;font-size:13px;color:${pnlColor};">${pnlStr}</span>`;
   document.getElementById('post-trade-replay').value='';
@@ -2555,7 +2567,7 @@ function renderTradeTable(){
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px 18px;margin-bottom:14px;">
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">DATE</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${t.date}</div></div>
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">SESSION</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${esc(t.session||'â')}</div></div>
-          <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">INSTRUMENT</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${esc(t.instrument||'â')} Ã ${t.contracts||1}</div></div>
+          <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">INSTRUMENT</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${esc(t.instrument||'â')} × ${t.contracts||1}</div></div>
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">R:R</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${rrLabel}</div></div>
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">OUTCOME</div><div style="font-size:12px;color:${outcomeColor};">${outcomeLabel}</div></div>
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">PnL</div><div style="font-size:13px;font-weight:600;color:${outcomeColor};">${fmt(t.pnl||0)}</div></div>
@@ -2955,7 +2967,7 @@ function edNextPhase(){
         const win=document.getElementById('dc-win').value.trim();
         const lesson=document.getElementById('dc-lesson').value.trim();
         const ratingWord = _dayRating ? ED_RATING_LABELS[_dayRating-1].toUpperCase() : 'UNRATED';
-        document.getElementById('ed-seal-sub').textContent=`rating: ${ratingWord}  Â·  ${win?'win logged':'no win'}  Â·  ${lesson?'lesson logged':'no lesson'}`;
+        document.getElementById('ed-seal-sub').textContent=`rating: ${ratingWord}  ·  ${win?'win logged':'no win'}  ·  ${lesson?'lesson logged':'no lesson'}`;
       }
       const next = document.getElementById('ed-phase-'+_edPhase);
       if(next){ next.style.display='flex'; setTimeout(()=>next.classList.add('active'),20); }
