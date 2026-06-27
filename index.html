@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>â</title>
+<title>—</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Noto+Kufi+Arabic:wght@300;400;700&display=swap');
 
@@ -33,7 +33,7 @@ body {
   overflow-x:hidden;
 }
 
-/* ââ NOISE LAYER ââ */
+/* ── NOISE LAYER ── */
 body::after {
   content:'';
   position:fixed; inset:0;
@@ -43,9 +43,9 @@ body::after {
   background-size:300px;
 }
 
-/* ââââââââââââââââââââââââââââââââ
+/* ════════════════════════════════
    LANDING
-ââââââââââââââââââââââââââââââââ */
+════════════════════════════════ */
 .page { display:none; min-height:100vh; }
 .page.active { display:flex; flex-direction:column; }
 #page-landing {
@@ -195,9 +195,9 @@ body::after {
   transform:scaleX(1.1);
 }
 
-/* ââââââââââââââââââââââââââââââââ
+/* ════════════════════════════════
    NAV
-ââââââââââââââââââââââââââââââââ */
+════════════════════════════════ */
 .topnav {
   background:rgba(0,0,0,.9);
   border-bottom:1px solid var(--border);
@@ -249,16 +249,16 @@ body::after {
 }
 .exit-btn:hover { border-color:rgba(255,255,255,.3); color:var(--accent2); }
 
-/* ââââââââââââââââââââââââââââââââ
+/* ════════════════════════════════
    MAIN
-ââââââââââââââââââââââââââââââââ */
+════════════════════════════════ */
 .main-content {
   flex:1; padding:26px 28px;
   overflow-y:auto;
   background:radial-gradient(ellipse 100% 60% at 50% 0%, #0c0c0c 0%, #000 60%);
 }
 
-/* ââ PANELS ââ */
+/* ── PANELS ── */
 .panel {
   background:var(--bg2);
   border:1px solid var(--border);
@@ -279,7 +279,7 @@ body::after {
 }
 .panel-title::after { content:''; flex:1; height:1px; background:var(--border); }
 
-/* ââ DATE HEADER ââ */
+/* ── DATE HEADER ── */
 .date-header {
   margin-bottom:22px;
   display:flex; align-items:baseline; gap:14px;
@@ -294,7 +294,7 @@ body::after {
   font-size:10px; color:var(--text-dim); letter-spacing:4px;
 }
 
-/* ââ PROGRESS BAR ââ */
+/* ── PROGRESS BAR ── */
 .progress-wrap { margin-bottom:18px; }
 .progress-label {
   display:flex; justify-content:space-between;
@@ -309,7 +309,7 @@ body::after {
   border-radius:1px; transition:width .6s ease;
 }
 
-/* ââ CHECKLIST ââ */
+/* ── CHECKLIST ── */
 .checklist { list-style:none; display:flex; flex-direction:column; gap:5px; }
 .check-item {
   display:flex; align-items:center; gap:11px;
@@ -369,7 +369,7 @@ body::after {
 .btn-w:hover { border-color:rgba(255,255,255,.45); color:#fff; }
 .btn-sm { padding:5px 11px; font-size:8px; }
 
-/* ââ GOALS ââ */
+/* ── GOALS ── */
 .goal-item {
   padding:13px; background:var(--bg3);
   border:1px solid var(--border); border-radius:2px;
@@ -399,7 +399,7 @@ body::after {
 }
 .goal-btn:hover { border-color:rgba(255,255,255,.3); color:#fff; }
 
-/* ââ STREAK ââ */
+/* ── STREAK ── */
 .streak-badge {
   display:inline-flex; align-items:center; gap:6px;
   font-family:\'Share Tech Mono\',monospace; font-size:9px;
@@ -421,14 +421,14 @@ body::after {
   0%,100%{ text-shadow:0 0 8px rgba(48,160,85,.5); }
   50%{ text-shadow:0 0 22px rgba(48,160,85,.9),0 0 8px rgba(48,160,85,.5); }
 }
-/* ââ ONE THING ââ */
+/* ── ONE THING ── */
 .one-thing-text {
   font-size:20px; font-weight:600; color:#fff; line-height:1.35;
   cursor:pointer; transition:opacity .2s;
 }
 .one-thing-text:hover { opacity:.65; }
 
-/* ââ RADIAL CALENDAR ââ */
+/* ── RADIAL CALENDAR ── */
 .radial-wrap {
   display:flex; flex-direction:column; align-items:center;
 }
@@ -452,7 +452,7 @@ body::after {
   text-transform:uppercase;
 }
 
-/* ââ MODALS ââ */
+/* ── MODALS ── */
 .modal-overlay {
   display:none; position:fixed; inset:0;
   background:rgba(0,0,0,.88); z-index:1000;
@@ -507,9 +507,9 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 .screenshot-upload-label { font-family:\'Share Tech Mono\',monospace; font-size:9px; color:var(--text-dim); letter-spacing:3px; }
 .screenshot-preview { max-width:100%; max-height:140px; object-fit:contain; border-radius:2px; display:none; }
 
-/* ââââââââââââââââââââââââââââââââ
+/* ════════════════════════════════
    TRADING
-ââââââââââââââââââââââââââââââââ */
+════════════════════════════════ */
 .stat-card {
   background:var(--bg2); border:1px solid var(--border);
   border-radius:2px; padding:18px;
@@ -624,7 +624,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 .page { opacity:1; transition:opacity .5s ease; }
 .page.fading { opacity:0; }
 
-/* ââ BOOT SCREEN ââ */
+/* ── BOOT SCREEN ── */
 #boot-screen {
   position:fixed; inset:0; background:#000; z-index:9998;
   display:flex; flex-direction:column;
@@ -647,7 +647,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 }
 @keyframes bcBlink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-/* ââ LANDING ENHANCED ââ */
+/* ── LANDING ENHANCED ── */
 /* inner corner brackets */
 .c-in { position:absolute; width:18px; height:18px; border-color:rgba(255,255,255,.07); border-style:solid; pointer-events:none; }
 .c-in.tl { top:80px; left:80px; border-width:1px 0 0 1px; }
@@ -692,11 +692,11 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   border:1px dashed rgba(255,255,255,.012);
 }
 
-/* ââ DRAG STATES ââ */
+/* ── DRAG STATES ── */
 .check-item.drag-over { border-top:2px solid rgba(255,255,255,.4) !important; }
 .goal-item.drag-over  { border-top:2px solid rgba(255,255,255,.4) !important; }
 
-/* ââ LANDING LIVE + STATUS ââ */
+/* ── LANDING LIVE + STATUS ── */
 .l-live-row {
   display:flex; align-items:center; gap:8px;
   font-family:\'Share Tech Mono\',monospace;
@@ -725,7 +725,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 }
 @keyframes statusBlink { 0%,100%{opacity:.65} 50%{opacity:.2} }
 
-/* ââ CLOCK GLITCH ââ */
+/* ── CLOCK GLITCH ── */
 @keyframes clockGlitch {
   0%   { clip-path:none; transform:none; filter:none; }
   12%  { clip-path:inset(15% 0 55% 0); transform:translateX(-5px); filter:blur(.5px); }
@@ -736,7 +736,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 }
 .clock-glitch { animation:clockGlitch .2s steps(1) forwards; }
 
-/* ââ ENTER AREA ENHANCED ââ */
+/* ── ENTER AREA ENHANCED ── */
 .enter-wrap { position:relative; display:flex; flex-direction:column; align-items:center; }
 .enter-ring {
   position:absolute; top:50%; left:50%;
@@ -784,9 +784,9 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   50%      { opacity:1;  transform:scaleX(1) translateX(0); }
 }
 
-/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-   ââ END DAY FULLSCREEN RITUAL ââ
-ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ══════════════════════════════════════════════════════════
+   ── END DAY FULLSCREEN RITUAL ──
+══════════════════════════════════════════════════════════ */
 #end-day-screen {
   display:none;
   position:fixed; inset:0; z-index:9000;
@@ -882,7 +882,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   margin-bottom:36px;
 }
 
-/* day stat row (phase 1 â auto-computed stats) */
+/* day stat row (phase 1 — auto-computed stats) */
 .ed-stats-row {
   display:flex; gap:0; width:100%; margin-bottom:32px;
   border:1px solid rgba(255,255,255,.06);
@@ -980,7 +980,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 }
 .ed-prog-dot.active { background:rgba(255,255,255,.6); box-shadow:0 0 6px rgba(255,255,255,.3); }
 
-/* SEAL animation â phase 4 */
+/* SEAL animation — phase 4 */
 .ed-seal-wrap {
   position:relative; width:160px; height:160px; margin-bottom:4px;
 }
@@ -1019,7 +1019,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 
 @keyframes edFadeIn { to{opacity:1} }
 
-/* ââ VAULT ââ */
+/* ── VAULT ── */
 .vault-header {
   display:flex; align-items:flex-start; justify-content:space-between;
   margin-bottom:20px; padding-bottom:16px;
@@ -1082,7 +1082,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 }
 .vault-trade-row:last-child { border-bottom:none; }
 
-/* ââ JOURNAL PAGE ââ */
+/* ── JOURNAL PAGE ── */
 .journal-layout {
   display:grid; grid-template-columns:260px 1fr; gap:14px;
   height:calc(100vh - 50px - 84px);
@@ -1155,12 +1155,12 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   margin:8px 0 4px;
 }
 
-/* ââââââââââââââââââââââââââââââââ
+/* ════════════════════════════════
    MOBILE RESPONSIVE
-ââââââââââââââââââââââââââââââââ */
+════════════════════════════════ */
 
 
-  /* ââ MOBILE RESPONSIVE ââ */
+  /* ── MOBILE RESPONSIVE ── */
   @media (max-width: 768px) {
     body { overflow-x: hidden; font-size: 14px; }
     .topnav { padding: 0 12px; height: 48px; gap: 0; }
@@ -1228,7 +1228,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 </head>
 <body>
 
-<!-- ââââ LOGIN ââââ -->
+<!-- ════ LOGIN ════ -->
 <div id="login-screen" style="display:none;position:fixed;inset:0;z-index:10000;background:#000;flex-direction:column;align-items:center;justify-content:center;">
   <div class="c c-tl"></div><div class="c c-tr"></div>
   <div class="c c-bl"></div><div class="c c-br"></div>
@@ -1242,7 +1242,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
     <div id="login-mode-label" style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);letter-spacing:4px;margin-bottom:36px;">// enter access code</div>
     <div style="width:100%;margin-bottom:28px;">
       <div style="font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:3px;margin-bottom:7px;">ACCESS CODE</div>
-      <input id="login-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="off" placeholder="â¢â¢â¢â¢"
+      <input id="login-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="off" placeholder="••••"
         style="width:100%;background:rgba(255,255,255,.025);border:none;border-bottom:1px solid rgba(255,255,255,.15);color:#fff;font-family:'Share Tech Mono',monospace;font-size:22px;padding:10px 12px;outline:none;box-sizing:border-box;text-align:center;letter-spacing:8px;"
         onkeydown="if(event.key==='Enter')pinSubmit()">
     </div>
@@ -1257,13 +1257,13 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   </div>
 </div>
 
-<!-- ââââ BOOT ââââ -->
+<!-- ════ BOOT ════ -->
 <div id="boot-screen">
   <div id="boot-lines"></div>
   <span class="boot-cursor-blink" id="boot-cursor"></span>
 </div>
 
-<!-- ââââ LANDING ââââ -->
+<!-- ════ LANDING ════ -->
 <div id="page-landing" class="page active">
   <div class="l-topline"></div>
   <canvas id="stars" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
@@ -1276,7 +1276,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   <div class="c-in tl"></div><div class="c-in tr"></div>
   <div class="c-in bl"></div><div class="c-in br"></div>
   <div class="c-label tl">SYS // ACTIVE</div>
-  <div class="c-label tr" id="l-sys-date">â</div>
+  <div class="c-label tr" id="l-sys-date">—</div>
   <div class="c-label bl">LOCAL // SECURE</div>
   <div class="c-label br">v1.0.0</div>
   <div class="l-ring-deco"></div>
@@ -1292,7 +1292,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 
   <div class="l-content">
     <div class="l-clock" id="landing-clock">٠٠:٠٠:٠٠</div>
-    <div class="l-date" id="landing-date">â</div>
+    <div class="l-date" id="landing-date">—</div>
     <div class="l-live-row"><div class="l-live-dot"></div><span>live</span></div>
     <div class="l-divider"></div>
     <div class="l-slogan" id="l-slogan"></div>
@@ -1304,7 +1304,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   </div>
 </div>
 
-<!-- ââââ HQ ââââ -->
+<!-- ════ HQ ════ -->
 <div id="page-hq" class="page">
   <nav class="topnav">
     
@@ -1365,7 +1365,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
           <button class="btn-w" onclick="addTask()">add</button>
         </div>
         <div style="margin-top:8px;">
-          <button class="btn-w btn-sm" id="tomorrow-toggle" onclick="toggleTomorrow()" style="border-color:transparent;font-size:8px;letter-spacing:2px;width:100%;text-align:left;padding:6px 0;">â¸ plan tomorrow</button>
+          <button class="btn-w btn-sm" id="tomorrow-toggle" onclick="toggleTomorrow()" style="border-color:transparent;font-size:8px;letter-spacing:2px;width:100%;text-align:left;padding:6px 0;">▸ plan tomorrow</button>
           <div id="tomorrow-section" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
             <div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:8px;">TOMORROW</div>
             <ul class="checklist" id="tomorrow-checklist" style="margin-bottom:8px;"></ul>
@@ -1418,7 +1418,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   </div>
 </div>
 
-<!-- ââââ TRADING ââââ -->
+<!-- ════ TRADING ════ -->
 <div id="page-trading" class="page">
   <nav class="topnav">
     
@@ -1448,7 +1448,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
         <div style="flex:1;min-width:160px;">
           <div style="display:flex;justify-content:space-between;font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);margin-bottom:5px;">
             <span id="target-pnl-label">$0.00 this month</span>
-            <span id="target-pct-label">â</span>
+            <span id="target-pct-label">—</span>
           </div>
           <div class="progress-track"><div class="progress-fill" id="target-fill" style="width:0%"></div></div>
         </div>
@@ -1481,11 +1481,11 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
         <div style="margin-top:12px;display:flex;gap:20px;">
           <div>
             <div class="stat-label">best day</div>
-            <div style="font-family:\'Share Tech Mono\',monospace;font-size:12px;margin-top:3px;" id="best-day-label">â</div>
+            <div style="font-family:\'Share Tech Mono\',monospace;font-size:12px;margin-top:3px;" id="best-day-label">—</div>
           </div>
           <div>
             <div class="stat-label">worst day</div>
-            <div style="font-family:\'Share Tech Mono\',monospace;font-size:12px;margin-top:3px;" id="worst-day-label">â</div>
+            <div style="font-family:\'Share Tech Mono\',monospace;font-size:12px;margin-top:3px;" id="worst-day-label">—</div>
           </div>
         </div>
       </div>
@@ -1514,7 +1514,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   </div>
 </div>
 
-<!-- ââââ REVIEW ââââ -->
+<!-- ════ REVIEW ════ -->
 <div id="page-review" class="page">
   <nav class="topnav">
     
@@ -1539,13 +1539,13 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   </div>
 </div>
 
-<!-- ââââ MODALS ââââ -->
+<!-- ════ MODALS ════ -->
 
 <!-- Goal Modal -->
 <div class="modal-overlay" id="goal-modal">
   <div class="modal">
     <div class="modal-title">new goal</div>
-    <button class="modal-close" onclick="closeModal('goal-modal')">â</button>
+    <button class="modal-close" onclick="closeModal('goal-modal')">✕</button>
     <div class="form-group" style="margin-bottom:11px;">
       <label class="form-label">name</label>
       <input type="text" class="dark-input" id="goal-name" placeholder="e.g. hit $50k by Q3">
@@ -1566,7 +1566,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
       </div>
     </div>
     <div class="form-group" style="margin-bottom:14px;">
-      <label class="form-label">progress (0â100)</label>
+      <label class="form-label">progress (0–100)</label>
       <input type="number" class="dark-input" id="goal-progress" min="0" max="100" value="0">
     </div>
     <button class="btn-w" style="width:100%;" onclick="saveGoal()">save</button>
@@ -1577,7 +1577,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 <div class="modal-overlay" id="trade-modal">
   <div class="modal" style="max-width:580px;">
     <div class="modal-title">log trade</div>
-    <button class="modal-close" onclick="closeModal('trade-modal')">â</button>
+    <button class="modal-close" onclick="closeModal('trade-modal')">✕</button>
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">date</label>
@@ -1659,7 +1659,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 <div class="modal-overlay" id="day-modal">
   <div class="modal">
     <div class="modal-title" id="day-modal-title">day log</div>
-    <button class="modal-close" onclick="closeModal('day-modal')">â</button>
+    <button class="modal-close" onclick="closeModal('day-modal')">✕</button>
     <div id="day-modal-body"></div>
   </div>
 </div>
@@ -1673,10 +1673,10 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 <div class="modal-overlay" id="goal-update-modal">
   <div class="modal" style="max-width:320px;">
     <div class="modal-title">update progress</div>
-    <button class="modal-close" onclick="closeModal('goal-update-modal')">â</button>
+    <button class="modal-close" onclick="closeModal('goal-update-modal')">✕</button>
     <input type="hidden" id="goal-update-index">
     <div class="form-group" style="margin-bottom:14px;">
-      <label class="form-label">progress (0â100)</label>
+      <label class="form-label">progress (0–100)</label>
       <input type="number" class="dark-input" id="goal-update-val" min="0" max="100">
     </div>
     <button class="btn-w" style="width:100%;" onclick="saveGoalProgress()">save</button>
@@ -1707,7 +1707,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   </div>
 </div>
 
-<!-- ââââ VAULT ââââ -->
+<!-- ════ VAULT ════ -->
 <div id="page-vault" class="page">
   <nav class="topnav">
     
@@ -1727,12 +1727,12 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
       <div id="vault-count" style="font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);letter-spacing:3px;"></div>
     </div>
     <div id="vault-list"></div>
-    <div id="vault-empty" style="display:none;text-align:center;padding:60px;font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);letter-spacing:4px;">no sealed days yet â complete an end day ritual to archive a day</div>
+    <div id="vault-empty" style="display:none;text-align:center;padding:60px;font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);letter-spacing:4px;">no sealed days yet — complete an end day ritual to archive a day</div>
   </div>
 </div>
 
 <!-- Daily Close Modal -->
-<!-- ââââ END DAY RITUAL ââââ -->
+<!-- ════ END DAY RITUAL ════ -->
 <div id="end-day-screen">
   <!-- corners -->
   <div class="ed-corner tl"></div><div class="ed-corner tr"></div>
@@ -1741,8 +1741,8 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
   <div class="ed-topbar">
     <div class="ed-topbar-dot"></div>
     <span>SESSION CLOSE</span>
-    <span id="ed-topbar-date">â</span>
-    <span class="ed-topbar-right" id="ed-topbar-time">â</span>
+    <span id="ed-topbar-date">—</span>
+    <span class="ed-topbar-right" id="ed-topbar-time">—</span>
   </div>
 
   <!-- PHASE 0: INITIATE -->
@@ -1756,7 +1756,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 
   <!-- PHASE 1: RATE THE DAY -->
   <div class="ed-phase" id="ed-phase-1">
-    <div class="ed-phase-label">// phase 01 â session rating</div>
+    <div class="ed-phase-label">// phase 01 — session rating</div>
     <div class="ed-title" style="font-size:22px;margin-bottom:4px;">HOW WAS TODAY?</div>
     <div class="ed-sub">be honest with yourself</div>
     <div class="ed-rating-row" id="ed-rating-row"></div>
@@ -1765,7 +1765,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 
   <!-- PHASE 2: ONE WIN -->
   <div class="ed-phase" id="ed-phase-2">
-    <div class="ed-phase-label">// phase 02 â one win</div>
+    <div class="ed-phase-label">// phase 02 — one win</div>
     <div class="ed-title" style="font-size:22px;margin-bottom:4px;">WHAT WENT RIGHT?</div>
     <div class="ed-sub">one thing. could be anything.</div>
     <div class="ed-field-wrap">
@@ -1777,7 +1777,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 
   <!-- PHASE 3: ONE LESSON -->
   <div class="ed-phase" id="ed-phase-3">
-    <div class="ed-phase-label">// phase 03 â one lesson</div>
+    <div class="ed-phase-label">// phase 03 — one lesson</div>
     <div class="ed-title" style="font-size:22px;margin-bottom:4px;">WHAT DID YOU LEARN?</div>
     <div class="ed-sub">carry it forward. don't repeat it.</div>
     <div class="ed-field-wrap">
@@ -1789,7 +1789,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 
   <!-- PHASE 4: SEAL -->
   <div class="ed-phase" id="ed-phase-4">
-    <div class="ed-phase-label">// phase 04 â seal</div>
+    <div class="ed-phase-label">// phase 04 — seal</div>
     <!-- SVG circular progress ring -->
     <div class="ed-seal-wrap" id="ed-seal-wrap">
       <svg class="ed-seal-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
@@ -1799,13 +1799,13 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
         <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="1" stroke-dasharray="4 6"/>
         <!-- track -->
         <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2"/>
-        <!-- fill arc â animated via JS -->
+        <!-- fill arc — animated via JS -->
         <circle id="ed-seal-arc" cx="80" cy="80" r="68" fill="none"
           stroke="rgba(255,255,255,.85)" stroke-width="2"
           stroke-linecap="round"
           stroke-dasharray="0 427"
           transform="rotate(-90 80 80)"/>
-        <!-- tick dot at leading edge â positioned via JS -->
+        <!-- tick dot at leading edge — positioned via JS -->
         <circle id="ed-seal-dot" cx="80" cy="12" r="3" fill="#fff" opacity="0"/>
       </svg>
       <div class="ed-seal-center">
@@ -1827,14 +1827,14 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 
   <!-- progress + skip -->
   <div class="ed-progress" id="ed-progress"></div>
-  <button class="ed-skip" onclick="closeEndDay()">â exit</button>
+  <button class="ed-skip" onclick="closeEndDay()">✕ exit</button>
 </div>
 
 <!-- Replay Modal -->
 <div class="modal-overlay" id="replay-modal">
   <div class="modal" style="max-width:360px;">
     <div class="modal-title">trade replay</div>
-    <button class="modal-close" onclick="closeModal('replay-modal')">â</button>
+    <button class="modal-close" onclick="closeModal('replay-modal')">✕</button>
     <input type="hidden" id="replay-idx">
     <div class="form-group" style="margin-bottom:16px;">
       <label class="form-label">execution rating</label>
@@ -1852,7 +1852,7 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 <div class="modal-overlay" id="recurring-modal">
   <div class="modal" style="max-width:400px;">
     <div class="modal-title">recurring habits / tasks</div>
-    <button class="modal-close" onclick="closeModal('recurring-modal')">â</button>
+    <button class="modal-close" onclick="closeModal('recurring-modal')">✕</button>
     <div style="font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);letter-spacing:2px;margin-bottom:12px;">auto-added to each new day</div>
     <div id="recurring-list" style="margin-bottom:14px;min-height:20px;"></div>
     <div style="display:flex;gap:8px;">
@@ -1863,9 +1863,9 @@ textarea.dark-input { resize:vertical; min-height:72px; font-family:'Rajdhani',s
 </div>
 
 <script>
-// ââ NO EXTERNAL AUTH â localStorage only â
+// ── NO EXTERNAL AUTH — localStorage only —
 let currentUser=null; // kept for compat, always null
-// ââ STATE ââ
+// ── STATE ──
 const S = {
   load:(k,d)=>{ try{return JSON.parse(localStorage.getItem(k))??d}catch{return d} },
   save:(k,v)=>{ localStorage.setItem(k,JSON.stringify(v)); }
@@ -1897,7 +1897,7 @@ const CAT_COLORS = {
 };
 function getCatColor(cat){ return CAT_COLORS[(cat||'').toLowerCase()] || 'rgba(255,255,255,0.1)'; }
 
-// ââ DB SYNC (stub â localStorage only) ââ
+// ── DB SYNC (stub — localStorage only) ──
 const db = {
   uid:()=>null,
   syncTrades:async function(){},
@@ -1913,7 +1913,7 @@ const db = {
   migrateFromLocalStorage:async function(){ return false; }
 };
 
-// ââ AUTH â no login required by default ââ
+// ── AUTH — no login required by default ──
 // To enable PIN: localStorage.setItem('cc_access_pin','1234')
 function _runAuthFlow(){
   const pin=localStorage.getItem('cc_access_pin');
@@ -1926,17 +1926,8 @@ function _runAuthFlow(){
   }
 }
 
-// one-time migration: move wrong-date close to June 26
-(function(){
-  try{
-    const dc=JSON.parse(localStorage.getItem('cc_daily_close')||'{}');
-    if(dc['2026-06-27']&&!dc['2026-06-26']){
-      dc['2026-06-26']=dc['2026-06-27'];
-      delete dc['2026-06-27'];
-      localStorage.setItem('cc_daily_close',JSON.stringify(dc));
-    }
-  }catch(e){}
-})();
+// migrate mislogged close date
+(function(){try{var dc=JSON.parse(localStorage.getItem('cc_daily_close')||'{}');if(dc['2026-06-27']&&!dc['2026-06-26']){dc['2026-06-26']=dc['2026-06-27'];delete dc['2026-06-27'];localStorage.setItem('cc_daily_close',JSON.stringify(dc));}}catch(e){}})();
 function initAuth(){
   if(!localStorage.getItem('cc_tasks')){
     fetch('https://raw.githubusercontent.com/MakayBrooks/grindspace/main/userdata.json')
@@ -1987,11 +1978,11 @@ function logoutUser(){
     runBoot();
   }
 }
-// ââ ARABIC NUMERALS ââ
+// ── ARABIC NUMERALS ──
 const AR = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
 function toAr(s){ return String(s).replace(/[0-9]/g,d=>AR[d]); }
 
-// ââ CLOCKS ââ
+// ── CLOCKS ──
 function tick(){
   const now = new Date();
   const t   = now.toLocaleTimeString('en-US',{hour12:false});
@@ -2023,7 +2014,7 @@ function tick(){
 }
 setInterval(tick,1000); tick();
 
-// ââ NAV ââ
+// ── NAV ──
 function enterSystem(){
   const lp = document.getElementById('page-landing');
   lp.style.transition='opacity .6s ease'; lp.style.opacity='0';
@@ -2068,7 +2059,7 @@ function showPage(page,btn){
   }
 }
 
-// ââ VAULT ââ
+// ── VAULT ──
 let _vaultOpen = null;
 function renderVault(){
   const entries = Object.entries(dailyClose).sort((a,b)=>b[0].localeCompare(a[0]));
@@ -2082,7 +2073,7 @@ function renderVault(){
     const hasJournalClose=(journalLog[k]||[]).some(e=>e.text&&e.text.startsWith('[daily close]')&&e.text.length>20);
     if(isEmpty&&hasJournalClose){
       restoreBanner+=`<div style="display:flex;align-items:center;gap:14px;padding:12px 16px;margin-bottom:8px;border:1px solid rgba(255,200,0,.2);background:rgba(255,200,0,.04);border-radius:2px;">
-        <span style="font-family:\'Share Tech Mono\',monospace;font-size:9px;color:rgba(255,200,0,.7);letter-spacing:2px;">â  ${k} â empty entry detected, original found in journal</span>
+        <span style="font-family:\'Share Tech Mono\',monospace;font-size:9px;color:rgba(255,200,0,.7);letter-spacing:2px;">⚠ ${k} — empty entry detected, original found in journal</span>
         <button onclick="restoreVaultFromJournal('${k}')" style="margin-left:auto;background:none;border:1px solid rgba(255,200,0,.3);color:rgba(255,200,0,.8);font-family:\'Share Tech Mono\',monospace;font-size:8px;letter-spacing:2px;padding:5px 12px;cursor:pointer;">restore</button>
       </div>`;
     }
@@ -2099,14 +2090,14 @@ function renderVault(){
     const pnlColor=dayPnl>0?'var(--green)':dayPnl<0?'var(--red)':'var(--text-dim)';
     const badgeCls=dayPnl>0?'win':dayPnl<0?'loss':'flat';
     const badgeTxt=dayPnl>0?'WIN':dayPnl<0?'LOSS':'BREAKEVEN';
-    const stars=dc.rating?'â'.repeat(dc.rating)+'â'.repeat(5-dc.rating):'â unrated';
+    const stars=dc.rating?'★'.repeat(dc.rating)+'☆'.repeat(5-dc.rating):'— unrated';
     const ratingWord=dc.rating?['','rough','okay','solid','great','locked in'][dc.rating]:'';
     // journal entries for this day
     const jEntries=(journalLog[k]||[]).filter(e=>!e.text.startsWith('[daily close]'));
     // body
     const body=isOpen?`<div class="vault-entry-body">
       <div class="vault-body-grid">
-        <div><div class="vault-body-cell-label">RATING</div><div class="vault-body-cell-val">${dc.rating||0}/5 â ${ratingWord}</div></div>
+        <div><div class="vault-body-cell-label">RATING</div><div class="vault-body-cell-val">${dc.rating||0}/5 — ${ratingWord}</div></div>
         ${dc.win?`<div><div class="vault-body-cell-label">WIN</div><div class="vault-body-cell-val">${esc(dc.win)}</div></div>`:''}
         ${dc.lesson?`<div><div class="vault-body-cell-label">LESSON</div><div class="vault-body-cell-val">${esc(dc.lesson)}</div></div>`:''}
         ${hasTrades?`<div><div class="vault-body-cell-label">TRADES</div><div class="vault-body-cell-val">${dayTrades.length} (${dayWins}W / ${dayTrades.length-dayWins}L)</div></div>`:''}
@@ -2114,16 +2105,16 @@ function renderVault(){
       </div>
       ${hasTrades?`<div style="margin-bottom:10px;"><div class="vault-body-cell-label" style="margin-bottom:8px;">TRADES</div>
         ${dayTrades.map(t=>`<div class="vault-trade-row">
-          <span style="font-family:'Orbitron',sans-serif;font-size:10px;color:#fff;">${esc(t.ticker||'â')}</span>
+          <span style="font-family:'Orbitron',sans-serif;font-size:10px;color:#fff;">${esc(t.ticker||'—')}</span>
           <span class="tag tag-${t.direction==='LONG'?'long':'short'}" style="font-size:8px;padding:1px 6px;">${t.direction}</span>
           <span>${esc(t.instrument||'')} ×${t.contracts||1}</span>
           ${t.rr!=null?`<span>${t.rr}:1</span>`:''}
           <span style="color:${(t.pnl||0)>=0?'var(--green)':'var(--red)'};">${fmt(t.pnl||0)}</span>
-          ${t.execution_rating?`<span>${'â'.repeat(t.execution_rating)}</span>`:''}
+          ${t.execution_rating?`<span>${'★'.repeat(t.execution_rating)}</span>`:''}
         </div>`).join('')}
       </div>`:''}
       ${jEntries.length?`<div><div class="vault-body-cell-label" style="margin-bottom:8px;">JOURNAL (${jEntries.length})</div>
-        ${jEntries.slice(0,3).map(e=>`<div style="font-family:'Rajdhani',sans-serif;font-size:12px;color:var(--text-dim);line-height:1.6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);">${esc(e.text.substring(0,180))}${e.text.length>180?'â¦':''}</div>`).join('')}
+        ${jEntries.slice(0,3).map(e=>`<div style="font-family:'Rajdhani',sans-serif;font-size:12px;color:var(--text-dim);line-height:1.6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);">${esc(e.text.substring(0,180))}${e.text.length>180?'…':''}</div>`).join('')}
         ${jEntries.length>3?`<div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);margin-top:6px;letter-spacing:2px;">+${jEntries.length-3} more entries</div>`:''}
       </div>`:''}
     </div>`:'';
@@ -2133,7 +2124,7 @@ function renderVault(){
         <div class="vault-entry-stars">${stars}</div>
         ${hasTrades?`<span class="vault-entry-badge ${badgeCls}">${badgeTxt}</span>`:''}
         ${hasTrades?`<div class="vault-entry-pnl" style="color:${pnlColor};">${fmt(dayPnl)}</div>`:''}
-        <button onclick="event.stopPropagation();deleteVaultEntry('${k}')" style="margin-left:auto;background:none;border:none;color:rgba(255,255,255,.15);cursor:pointer;font-size:11px;padding:2px 6px;transition:color .15s;" onmouseover="this.style.color='rgba(200,64,64,.7)'" onmouseout="this.style.color='rgba(255,255,255,.15)'">â</button>
+        <button onclick="event.stopPropagation();deleteVaultEntry('${k}')" style="margin-left:auto;background:none;border:none;color:rgba(255,255,255,.15);cursor:pointer;font-size:11px;padding:2px 6px;transition:color .15s;" onmouseover="this.style.color='rgba(200,64,64,.7)'" onmouseout="this.style.color='rgba(255,255,255,.15)'">✕</button>
       </div>
       ${body}
     </div>`;
@@ -2157,17 +2148,17 @@ function restoreVaultFromJournal(k){
   const lines=best.text.split('\n');
   let rating=0, win='', lesson='';
   lines.forEach(l=>{
-    if(l.startsWith('rating:')){ rating=(l.match(/â/g)||[]).length; }
+    if(l.startsWith('rating:')){ rating=(l.match(/★/g)||[]).length; }
     else if(l.startsWith('win:')){ win=l.replace(/^win:\s*/,'').trim(); }
     else if(l.startsWith('lesson:')){ lesson=l.replace(/^lesson:\s*/,'').trim(); }
   });
   dailyClose[k]={rating,win,lesson,ts:best.id||Date.now()};
   S.save('cc_daily_close',dailyClose);
   renderVault();
-  alert('restored! rating: '+rating+'/5, win: "'+(win||'â')+'", lesson: "'+(lesson||'â')+'"');
+  alert('restored! rating: '+rating+'/5, win: "'+(win||'—')+'", lesson: "'+(lesson||'—')+'"');
 }
 
-// ââ MODALS ââ
+// ── MODALS ──
 function openGoalModal(){ document.getElementById('goal-modal').classList.add('open'); }
 function openTradeModal(){
   ssData=null;
@@ -2181,8 +2172,11 @@ document.querySelectorAll('.modal-overlay').forEach(o=>{
   o.addEventListener('click',e=>{ if(e.target===o&&o.id!=='img-modal') closeModal(o.id); });
 });
 
-// ââ CHECKLIST ââ
-function todayKey(){const d=new Date();if(d.getHours()<4)d.setDate(d.getDate()-1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+// ── CHECKLIST ──
+function todayKey(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
 function renderChecklist(){
   const k=todayKey();
   if(!tasks[k]){ tasks[k]=taskTemplate.map(t=>({text:t,done:false})); S.save('cc_tasks',tasks); }
@@ -2196,7 +2190,7 @@ function renderChecklist(){
         <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3 5.5L8 1" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <span class="check-text">${esc(t.text)}</span>
-      <button class="check-delete" onclick="delTask(${i})">â</button>`;
+      <button class="check-delete" onclick="delTask(${i})">✕</button>`;
     li.querySelector('.check-box').addEventListener('click',()=>toggleTask(i));
     li.querySelector('.check-text').addEventListener('click',()=>toggleTask(i));
     li.addEventListener('dragstart',()=>{ dragTaskIdx=i; setTimeout(()=>li.style.opacity='.35',0); });
@@ -2234,7 +2228,7 @@ function updateProg(){
   document.getElementById('progress-pct').textContent=pct+'%';
 }
 
-// ââ GOALS ââ
+// ── GOALS ──
 let openGoalIdx = null;
 function renderGoals(){
   const el=document.getElementById('goals-list');
@@ -2297,7 +2291,7 @@ function saveGoalProgress(){
   S.save('cc_goals',goals); closeModal('goal-update-modal'); renderGoals();
 }
 
-// ââ STREAK ââ
+// ── STREAK ──
 function calcStreak(){
   let streak=0, d=new Date();
   for(let i=0;i<365;i++){
@@ -2315,7 +2309,7 @@ function calcStreak(){
   }
 }
 
-// ââ MONTHLY TARGET ââ
+// ── MONTHLY TARGET ──
 function saveMonthlyTarget(){
   S.save('cc_monthly_target', parseFloat(document.getElementById('monthly-target-input').value)||0);
   updateTargetBar();
@@ -2331,12 +2325,12 @@ function updateTargetBar(){
   const pctLbl=document.getElementById('target-pct-label');
   if(fill) fill.style.width=pct+'%';
   if(lbl)  lbl.textContent=fmt(monthPnl)+' this month';
-  if(pctLbl) pctLbl.textContent=target>0?Math.round(pct)+'% of $'+target.toLocaleString():'set a target â';
+  if(pctLbl) pctLbl.textContent=target>0?Math.round(pct)+'% of $'+target.toLocaleString():'set a target →';
   if(fill)   fill.style.background=monthPnl<0?'linear-gradient(90deg,#4a1a1a,var(--red))':'linear-gradient(90deg,#1a3a2a,var(--green))';
   const inp=document.getElementById('monthly-target-input');
   if(inp&&!inp.value){ const t=S.load('cc_monthly_target',0); if(t) inp.value=t; }
 }
-// ââ RADIAL CALENDAR ââ
+// ── RADIAL CALENDAR ──
 const MONTHS=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
 
 function renderRadialCalendar(){
@@ -2406,34 +2400,33 @@ function changeMonth(dir){
   calM+=dir; if(calM>11){calM=0;calY++;} if(calM<0){calM=11;calY--;} renderRadialCalendar();
 }
 
-function openDayLog(dateStr){
-  const titleEl=document.getElementById('day-modal-title');
-  const bodyEl=document.getElementById('day-modal-body');
-  const modal=document.getElementById('day-modal');
-  if(!titleEl||!bodyEl||!modal)return;
-  const d=new Date(dateStr+'T12:00:00');
-  titleEl.textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  const entries=(journalLog&&journalLog[dateStr])||[];
-  const sealed=dailyClose&&dailyClose[dateStr];
-  let html='';
-  if(sealed){
-    html+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:8px 12px;background:#001a00;border:1px solid #00ff41;border-radius:4px;"><span style="color:#00ff41;font-size:18px;">&#10003;</span><span style="color:#00ff41;font-family:monospace;font-size:13px;">DAY SEALED</span></div>';
+function openDayLog(key){
+  const dt=tasks[key]||[];
+  const [y,m,d]=key.split('-');
+  const ds=new Date(+y,+m-1,+d).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  document.getElementById('day-modal-title').textContent=ds.toLowerCase();
+  const noteVal = esc(dayNotes[key]||'');
+  let body='';
+  if(!dt.length){
+    body+=`<div style="padding:14px 0 4px;text-align:center;font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);letter-spacing:3px;">nothing logged</div>`;
   } else {
-    html+='<div style="margin-bottom:14px;"><button onclick="window._closeTargetDate=\'';
-    html+=dateStr;
-    html+='\';document.getElementById(\'day-modal\').classList.remove(\'open\');edNextPhase();" style="background:#111;border:1px solid #444;color:#fff;font-family:monospace;font-size:12px;padding:8px 16px;cursor:pointer;width:100%;letter-spacing:1px;">// CLOSE THIS DAY</button></div>';
+    const done=dt.filter(t=>t.done).length;
+    body+=`
+      <div class="progress-wrap" style="margin-bottom:12px;">
+        <div class="progress-label"><span>completion</span><span>${Math.round((done/dt.length)*100)}%</span></div>
+        <div class="progress-track"><div class="progress-fill" style="width:${Math.round((done/dt.length)*100)}%"></div></div>
+      </div>
+      <ul class="day-log-tasks">
+        ${dt.map(t=>`<li class="day-log-task"><div class="dot ${t.done?'dot-done':'dot-miss'}"></div>${esc(t.text)}</li>`).join('')}
+      </ul>`;
   }
-  if(!entries.length){
-    html+='<p style="color:#555;font-style:italic;">No log entries for this day.</p>';
-  } else {
-    html+=entries.map(function(e){return '<div style="margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;"><span style="color:#00ff41;font-size:11px;font-family:monospace;">'+(e.time||'')+'</span><p style="margin:4px 0 0;color:#ccc;">'+(e.text||'')+'</p></div>';}).join('');
-  }
-  bodyEl.innerHTML=html;
-  modal.classList.add('open');
+  body+=`<textarea class="dark-input day-notes-area" placeholder="notes for this day..." oninput="saveDayNote('${key}',this.value)">${noteVal}</textarea>`;
+  document.getElementById('day-modal-body').innerHTML=body;
+  document.getElementById('day-modal').classList.add('open');
 }
 function saveDayNote(key,val){ dayNotes[key]=val; S.save('cc_day_notes',dayNotes); }
 
-// ââ TRADING ââ
+// ── TRADING ──
 function handleScreenshot(input){
   const f=input.files[0]; if(!f) return;
   const r=new FileReader();
@@ -2484,12 +2477,12 @@ function saveTrade(){
 }
 function renderConvictionStars(){
   const el=document.getElementById('conviction-stars'); if(!el) return;
-  el.innerHTML=[1,2,3,4,5].map(s=>`<button onclick="pickConviction(${s})" style="background:none;border:1px solid ${s<=_convictionRating?'rgba(255,255,255,.45)':'rgba(255,255,255,.1)'};border-radius:2px;cursor:pointer;font-size:16px;color:${s<=_convictionRating?'#fff':'rgba(255,255,255,.15)'};padding:5px 11px;transition:all .15s;flex:1;">â</button>`).join('');
+  el.innerHTML=[1,2,3,4,5].map(s=>`<button onclick="pickConviction(${s})" style="background:none;border:1px solid ${s<=_convictionRating?'rgba(255,255,255,.45)':'rgba(255,255,255,.1)'};border-radius:2px;cursor:pointer;font-size:16px;color:${s<=_convictionRating?'#fff':'rgba(255,255,255,.15)'};padding:5px 11px;transition:all .15s;flex:1;">★</button>`).join('');
 }
 function pickConviction(n){ _convictionRating=n; renderConvictionStars(); }
 function renderPostExecStars(){
   const el=document.getElementById('post-exec-stars'); if(!el) return;
-  el.innerHTML=[1,2,3,4,5].map(s=>`<button onclick="pickPostExec(${s})" style="background:none;border:1px solid ${s<=_postExecRating?'rgba(255,255,255,.45)':'rgba(255,255,255,.1)'};border-radius:2px;cursor:pointer;font-size:16px;color:${s<=_postExecRating?'#fff':'rgba(255,255,255,.15)'};padding:5px 11px;transition:all .15s;flex:1;">â</button>`).join('');
+  el.innerHTML=[1,2,3,4,5].map(s=>`<button onclick="pickPostExec(${s})" style="background:none;border:1px solid ${s<=_postExecRating?'rgba(255,255,255,.45)':'rgba(255,255,255,.1)'};border-radius:2px;cursor:pointer;font-size:16px;color:${s<=_postExecRating?'#fff':'rgba(255,255,255,.15)'};padding:5px 11px;transition:all .15s;flex:1;">★</button>`).join('');
 }
 function pickPostExec(n){ _postExecRating=n; renderPostExecStars(); }
 function cancelPostTrade(){
@@ -2543,19 +2536,19 @@ function renderTradeTable(){
       <td style="font-family:\'Share Tech Mono\',monospace;font-size:10px;">${t.date}</td>
       <td style="font-family:'Orbitron',sans-serif;font-size:12px;color:#fff;">${esc(t.ticker)}</td>
       <td><span class="tag tag-${t.direction==='LONG'?'long':'short'}">${t.direction}</span></td>
-      <td style="color:var(--text-dim);font-size:11px;">${esc(t.instrument||'â')}</td>
+      <td style="color:var(--text-dim);font-size:11px;">${esc(t.instrument||'—')}</td>
       <td style="font-family:\'Share Tech Mono\',monospace;font-size:11px;">${t.contracts||1}</td>
-      <td style="font-family:\'Share Tech Mono\',monospace;font-size:11px;">${t.rr!=null?(t.rr%1===0?t.rr:t.rr.toFixed(2).replace(/\.?0+$/,''))+':1':'â'}</td>
+      <td style="font-family:\'Share Tech Mono\',monospace;font-size:11px;">${t.rr!=null?(t.rr%1===0?t.rr:t.rr.toFixed(2).replace(/\.?0+$/,''))+':1':'—'}</td>
       <td class="${(t.pnl||0)>=0?'pnl-pos':'pnl-neg'}">${fmt(t.pnl||0)}</td>
-      <td style="font-size:11px;color:${t.outcome==='Win'?'var(--green)':t.outcome==='Loss'?'var(--red)':'var(--text-dim)'};">${esc(t.outcome||'â')}</td>
-      <td>${t.screenshot?`<img class="trade-screenshot-thumb" src="${t.screenshot}" onclick="event.stopPropagation();viewImg(${i})" title="view">`:'<span style="color:var(--text-dim);font-size:10px;">â</span>'}</td>
-      <td onclick="event.stopPropagation()"><button class="thumb-btn" onclick="delTrade(${i})">â</button></td>
+      <td style="font-size:11px;color:${t.outcome==='Win'?'var(--green)':t.outcome==='Loss'?'var(--red)':'var(--text-dim)'};">${esc(t.outcome||'—')}</td>
+      <td>${t.screenshot?`<img class="trade-screenshot-thumb" src="${t.screenshot}" onclick="event.stopPropagation();viewImg(${i})" title="view">`:'<span style="color:var(--text-dim);font-size:10px;">—</span>'}</td>
+      <td onclick="event.stopPropagation()"><button class="thumb-btn" onclick="delTrade(${i})">✕</button></td>
     </tr>`;
     const outcomeLabel = t.outcome ? t.outcome.toUpperCase() : ((t.pnl||0)>0?'WIN':(t.pnl||0)<0?'LOSS':'SCRATCH');
     const outcomeColor = outcomeLabel==='WIN'?'var(--green)':outcomeLabel==='LOSS'?'var(--red)':'var(--text-dim)';
-    const rrLabel = t.rr != null ? t.rr % 1 === 0 ? `${t.rr}:1` : `${t.rr.toFixed(2).replace(/\.?0+$/,'')}:1` : 'â';
-    const starsHtml = t.execution_rating ? '<span style="color:#fff;font-size:14px;letter-spacing:1px;">'+'â'.repeat(t.execution_rating)+'</span><span style="color:rgba(255,255,255,.1);font-size:14px;letter-spacing:1px;">'+'â'.repeat(5-t.execution_rating)+'</span>' : null;
-    const convHtml = t.conviction_rating ? '<span style="color:#fff;font-size:14px;letter-spacing:1px;">'+'â'.repeat(t.conviction_rating)+'</span><span style="color:rgba(255,255,255,.1);font-size:14px;letter-spacing:1px;">'+'â'.repeat(5-t.conviction_rating)+'</span>' : null;
+    const rrLabel = t.rr != null ? t.rr % 1 === 0 ? `${t.rr}:1` : `${t.rr.toFixed(2).replace(/\.?0+$/,'')}:1` : '—';
+    const starsHtml = t.execution_rating ? '<span style="color:#fff;font-size:14px;letter-spacing:1px;">'+'★'.repeat(t.execution_rating)+'</span><span style="color:rgba(255,255,255,.1);font-size:14px;letter-spacing:1px;">'+'★'.repeat(5-t.execution_rating)+'</span>' : null;
+    const convHtml = t.conviction_rating ? '<span style="color:#fff;font-size:14px;letter-spacing:1px;">'+'★'.repeat(t.conviction_rating)+'</span><span style="color:rgba(255,255,255,.1);font-size:14px;letter-spacing:1px;">'+'★'.repeat(5-t.conviction_rating)+'</span>' : null;
     const expand = isOpen ? `<tr class="trade-expand-row"><td colspan="10">
       <div class="trade-expand-inner" style="flex-direction:column;gap:0;">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
@@ -2566,8 +2559,8 @@ function renderTradeTable(){
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px 18px;margin-bottom:14px;">
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">DATE</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${t.date}</div></div>
-          <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">SESSION</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${esc(t.session||'â')}</div></div>
-          <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">INSTRUMENT</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${esc(t.instrument||'â')} × ${t.contracts||1}</div></div>
+          <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">SESSION</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${esc(t.session||'—')}</div></div>
+          <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">INSTRUMENT</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${esc(t.instrument||'—')} × ${t.contracts||1}</div></div>
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">R:R</div><div style="font-size:12px;color:rgba(255,255,255,.75);">${rrLabel}</div></div>
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">OUTCOME</div><div style="font-size:12px;color:${outcomeColor};">${outcomeLabel}</div></div>
           <div><div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:3px;margin-bottom:4px;">PnL</div><div style="font-size:13px;font-weight:600;color:${outcomeColor};">${fmt(t.pnl||0)}</div></div>
@@ -2625,7 +2618,7 @@ function renderPnlCalendar(){
     const dayTrades=trades.filter(t=>t.date===k);
     const ratedTrades=dayTrades.filter(t=>t.execution_rating);
     const avgExec=ratedTrades.length?Math.round(ratedTrades.reduce((s,t)=>s+t.execution_rating,0)/ratedTrades.length):0;
-    const starHtml=avgExec?`<div class="dp-stars">${'â'.repeat(avgExec)}</div>`:'';
+    const starHtml=avgExec?`<div class="dp-stars">${'★'.repeat(avgExec)}</div>`:'';
     let cls='pnl-cal-day',inner=`<div class="dn">${d}</div>`;
     if(pnl!==undefined){ cls+=pnl>=0?' profit':' loss'; inner+=`<div class="dp">${pnl>=0?'+':''}${Math.round(pnl)}</div>`; }
     if(isToday) cls+=' today';
@@ -2680,7 +2673,7 @@ function renderEquityCurve(){
   ctx.fillStyle=fv>=0?'#30a055':'#c84040'; ctx.fill();
 }
 
-// ââ DAILY JOURNAL ââ
+// ── DAILY JOURNAL ──
 function renderTodayEntries(){
   const k=todayKey();
   const entries=journalLog[k]||[];
@@ -2693,7 +2686,7 @@ function renderTodayEntries(){
     <div class="journal-entry-block" style="border-left:2px solid rgba(255,255,255,.14);padding:10px 12px 10px 14px;background:var(--bg3);border-radius:0 2px 2px 0;position:relative;">
       <div style="font-family:\'Share Tech Mono\',monospace;font-size:8px;color:var(--text-dim);letter-spacing:2px;margin-bottom:6px;">${esc(e.time)}</div>
       <div style="font-size:14px;line-height:1.75;white-space:pre-wrap;color:var(--text);">${esc(e.text)}</div>
-      <button onclick="deleteJournalEntry(${i})" style="position:absolute;top:7px;right:8px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:11px;font-family:monospace;opacity:0;transition:opacity .15s;" class="je-del">â</button>
+      <button onclick="deleteJournalEntry(${i})" style="position:absolute;top:7px;right:8px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:11px;font-family:monospace;opacity:0;transition:opacity .15s;" class="je-del">✕</button>
     </div>`).join('');
   el.querySelectorAll('.journal-entry-block').forEach(b=>{
     const btn=b.querySelector('.je-del');
@@ -2723,7 +2716,7 @@ function getJournalText(k){
   return entries.map(e=>e.text).join('\n\n');
 }
 
-// ââ REVIEW ââ
+// ── REVIEW ──
 let reviewMode='week';
 function setReviewMode(mode){
   reviewMode=mode;
@@ -2839,7 +2832,7 @@ function renderAllTimeReview(el){
   `;
 }
 
-// ââ TRADE REPLAY ââ
+// ── TRADE REPLAY ──
 let _replayRating = 0;
 function openReplayModal(i){
   const t = trades[i];
@@ -2851,7 +2844,7 @@ function openReplayModal(i){
 }
 function renderReplayStars(){
   const el = document.getElementById('replay-stars'); if(!el) return;
-  el.innerHTML = [1,2,3,4,5].map(s=>`<button onclick="pickStar(${s})" style="background:none;border:1px solid ${s<=_replayRating?'rgba(255,255,255,.45)':'rgba(255,255,255,.1)'};border-radius:2px;cursor:pointer;font-size:16px;color:${s<=_replayRating?'#fff':'rgba(255,255,255,.15)'};padding:5px 11px;transition:all .15s;">â</button>`).join('');
+  el.innerHTML = [1,2,3,4,5].map(s=>`<button onclick="pickStar(${s})" style="background:none;border:1px solid ${s<=_replayRating?'rgba(255,255,255,.45)':'rgba(255,255,255,.1)'};border-radius:2px;cursor:pointer;font-size:16px;color:${s<=_replayRating?'#fff':'rgba(255,255,255,.15)'};padding:5px 11px;transition:all .15s;">★</button>`).join('');
 }
 function pickStar(n){ _replayRating=n; renderReplayStars(); }
 function saveReplay(){
@@ -2863,7 +2856,7 @@ function saveReplay(){
   renderTradeTable();
 }
 
-// ââ ONE THING ââ
+// ── ONE THING ──
 function renderOneThingWidget(){
   const k=todayKey(); const val=oneThings[k];
   const setEl=document.getElementById('one-thing-set');
@@ -2887,14 +2880,14 @@ function editOneThing(){
   inp.value=oneThings[k]||''; inp.focus();
 }
 
-// ââ END DAY RITUAL ââ
+// ── END DAY RITUAL ──
 let _edPhase = 0;
 const ED_PHASES = 6;
 const ED_RATING_LABELS = ['rough','okay','solid','great','locked in'];
 
 function openDailyClose(){
   const existing = dailyClose[todayKey()];
-  if(existing && !confirm("you already sealed today â open again and overwrite?")) return;
+  if(existing && !confirm("you already sealed today — open again and overwrite?")) return;
   _dayRating = 0;
   _edPhase = 0;
   document.getElementById('dc-win').value='';
@@ -2914,10 +2907,10 @@ function openDailyClose(){
   const todayWins = todayTrades.filter(t=>t.outcome==='Win'||(t.pnl||0)>0).length;
   const statsEl = document.getElementById('ed-auto-stats');
   const cells = [
-    {label:'TRADES', val: todayTrades.length||'â'},
-    {label:'WIN RATE', val: todayTrades.length ? Math.round((todayWins/todayTrades.length)*100)+'%' : 'â'},
-    {label:'P&L', val: todayTrades.length ? (todayPnl>=0?'+':'')+fmt(todayPnl) : 'â', color: todayPnl>0?'var(--green)':todayPnl<0?'var(--red)':''},
-    {label:'TASKS', val: todayTasks.length ? doneTasks+'/'+todayTasks.length : 'â'},
+    {label:'TRADES', val: todayTrades.length||'—'},
+    {label:'WIN RATE', val: todayTrades.length ? Math.round((todayWins/todayTrades.length)*100)+'%' : '—'},
+    {label:'P&L', val: todayTrades.length ? (todayPnl>=0?'+':'')+fmt(todayPnl) : '—', color: todayPnl>0?'var(--green)':todayPnl<0?'var(--red)':''},
+    {label:'TASKS', val: todayTasks.length ? doneTasks+'/'+todayTasks.length : '—'},
   ];
   statsEl.innerHTML = cells.map((c,i)=>`
     <div class="ed-stat-cell" style="animation-delay:${.1+i*.08}s;">
@@ -3023,11 +3016,11 @@ function startSealAnimation(){
 }
 
 function submitDailyClose(){
-  const k = (window._closeTargetDate||todayKey());
+  const k = todayKey();
   const win = document.getElementById('dc-win').value.trim();
   const lesson = document.getElementById('dc-lesson').value.trim();
   const parts=[];
-  if(_dayRating) parts.push('rating: '+'â'.repeat(_dayRating)+'('+ED_RATING_LABELS[_dayRating-1]+')');
+  if(_dayRating) parts.push('rating: '+'★'.repeat(_dayRating)+'('+ED_RATING_LABELS[_dayRating-1]+')');
   if(win) parts.push('win: '+win);
   if(lesson) parts.push('lesson: '+lesson);
   if(parts.length){
@@ -3036,7 +3029,6 @@ function submitDailyClose(){
     const time=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});
     journalLog[k].push({id:Date.now(),text:'[daily close]\n'+parts.join('\n'),time});
     S.save('cc_journal_log',journalLog);
-  window._closeTargetDate=null;
   }
   dailyClose[k]={rating:_dayRating,win,lesson,ts:Date.now()};
   S.save('cc_daily_close',dailyClose);
@@ -3059,7 +3051,7 @@ function closeEndDay(){
   setTimeout(()=>{ scr.classList.remove('active'); scr.style.opacity=''; }, 400);
 }
 
-// ââ TOMORROW TASKS ââ
+// ── TOMORROW TASKS ──
 let _tomorrowOpen=false;
 function tomorrowKey(){
   const d=new Date(); d.setDate(d.getDate()+1);
@@ -3070,7 +3062,7 @@ function toggleTomorrow(){
   const sec=document.getElementById('tomorrow-section');
   const btn=document.getElementById('tomorrow-toggle');
   sec.style.display=_tomorrowOpen?'block':'none';
-  if(btn) btn.textContent=(_tomorrowOpen?'â¾':'â¸')+' plan tomorrow';
+  if(btn) btn.textContent=(_tomorrowOpen?'▾':'▸')+' plan tomorrow';
   if(_tomorrowOpen) renderTomorrowChecklist();
 }
 function renderTomorrowChecklist(){
@@ -3080,7 +3072,7 @@ function renderTomorrowChecklist(){
   tasks[k].forEach((t,i)=>{
     const li=document.createElement('li');
     li.className='check-item';
-    li.innerHTML=`<div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3 5.5L8 1" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="check-text">${esc(t.text)}</span><button class="check-delete" onclick="delTomorrowTask(${i})">â</button>`;
+    li.innerHTML=`<div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3 5.5L8 1" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="check-text">${esc(t.text)}</span><button class="check-delete" onclick="delTomorrowTask(${i})">✕</button>`;
     ul.appendChild(li);
   });
 }
@@ -3096,7 +3088,7 @@ function delTomorrowTask(i){
   S.save('cc_tasks',tasks); renderTomorrowChecklist();
 }
 
-// ââ GOAL DRAG ââ
+// ── GOAL DRAG ──
 function goalDragStart(i){
   dragGoalIdx=i;
   setTimeout(()=>{ const el=document.getElementById('goal-item-'+i); if(el) el.style.opacity='.35'; },0);
@@ -3117,7 +3109,7 @@ function goalDrop(e,i){
   S.save('cc_goals',goals); dragGoalIdx=null; renderGoals();
 }
 
-// ââ RECURRING TASKS ââ
+// ── RECURRING TASKS ──
 function openRecurringModal(){ renderRecurringList(); document.getElementById('recurring-modal').classList.add('open'); }
 function renderRecurringList(){
   const el=document.getElementById('recurring-list');
@@ -3128,7 +3120,7 @@ function renderRecurringList(){
   el.innerHTML=taskTemplate.map((t,i)=>`
     <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
       <span style="flex:1;font-size:13px;">${esc(t)}</span>
-      <button class="thumb-btn" onclick="delRecurring(${i})">â</button>
+      <button class="thumb-btn" onclick="delRecurring(${i})">✕</button>
     </div>`).join('');
 }
 function addRecurring(){
@@ -3139,7 +3131,7 @@ function addRecurring(){
 }
 function delRecurring(i){ taskTemplate.splice(i,1); S.save('cc_task_template',taskTemplate); renderRecurringList(); }
 
-// ââ SLOGAN TYPEWRITER ââ
+// ── SLOGAN TYPEWRITER ──
 let _sloganTimer=null;
 const SLOGANS=[
   "the work doesn't stop.",
@@ -3147,7 +3139,7 @@ const SLOGANS=[
   "those who endure to the end shall be saved.",
   "iron sharpens iron.",
   "do not grow weary in doing good.",
-  "the race is not to the swift â but to the consistent.",
+  "the race is not to the swift — but to the consistent.",
   "for the vision awaits its appointed time.",
   "be sober. be watchful.",
   "a man's discipline makes room for him.",
@@ -3158,7 +3150,7 @@ const SLOGANS=[
   "the humble will be exalted.",
   "one trade at a time. one day at a time.",
   "what you do in the dark shows up in the light.",
-  "patience is not passive â it is armed waiting.",
+  "patience is not passive — it is armed waiting.",
   "there is a time for everything.",
   "sharpen the mind. trust the process. protect the capital.",
   "the market owes you nothing. earn it.",
@@ -3175,7 +3167,7 @@ function typeSlogan(){
   },300);
 }
 
-// ââ BOOT SEQUENCE ââ
+// ── BOOT SEQUENCE ──
 let _bt=[];
 function runBoot(){
   const screen=document.getElementById('boot-screen');
@@ -3194,7 +3186,7 @@ function runBoot(){
     {t:'',d:820,cls:'dim'},
     {t:'ALL SYSTEMS NOMINAL',d:880},
     {t:'',d:1010,cls:'dim'},
-    {t:'â ACCESS GRANTED â',d:1200,cls:'accent'},
+    {t:'— ACCESS GRANTED —',d:1200,cls:'accent'},
   ];
   LINES.forEach(({t,d,cls})=>{
     _bt.push(setTimeout(()=>{
@@ -3214,7 +3206,7 @@ function runBoot(){
 initAuth();
 document.addEventListener('visibilitychange',()=>{ if(!document.hidden && currentUser) runBoot(); });
 
-// ââ CLOCK GLITCH ââ
+// ── CLOCK GLITCH ──
 setInterval(()=>{
   if(Math.random()>.4) return;
   const el=document.getElementById('landing-clock'); if(!el) return;
@@ -3222,11 +3214,11 @@ setInterval(()=>{
   setTimeout(()=>el.classList.remove('clock-glitch'),230);
 },5500);
 
-// ââ UTILS ââ
+// ── UTILS ──
 function fmt(n){ return (n>=0?'+$':'-$')+Math.abs(n).toFixed(2); }
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-// ââ STAR FIELD ââ
+// ── STAR FIELD ──
 (function initStars(){
   const canvas = document.getElementById('stars');
   if(!canvas) return;
