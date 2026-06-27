@@ -2170,10 +2170,7 @@ document.querySelectorAll('.modal-overlay').forEach(o=>{
 });
 
 // ── CHECKLIST ──
-function todayKey(){
-  const d=new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
+function todayKey(){const d=new Date();if(d.getHours()<4)d.setDate(d.getDate()-1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function renderChecklist(){
   const k=todayKey();
   if(!tasks[k]){ tasks[k]=taskTemplate.map(t=>({text:t,done:false})); S.save('cc_tasks',tasks); }
@@ -2397,29 +2394,20 @@ function changeMonth(dir){
   calM+=dir; if(calM>11){calM=0;calY++;} if(calM<0){calM=11;calY--;} renderRadialCalendar();
 }
 
-function openDayLog(key){
-  const dt=tasks[key]||[];
-  const [y,m,d]=key.split('-');
-  const ds=new Date(+y,+m-1,+d).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  document.getElementById('day-modal-title').textContent=ds.toLowerCase();
-  const noteVal = esc(dayNotes[key]||'');
-  let body='';
-  if(!dt.length){
-    body+=`<div style="padding:14px 0 4px;text-align:center;font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);letter-spacing:3px;">nothing logged</div>`;
+function openDayLog(dateStr){
+  const titleEl=document.getElementById('day-modal-title');
+  const bodyEl=document.getElementById('day-modal-body');
+  const modal=document.getElementById('day-modal');
+  if(!titleEl||!bodyEl||!modal)return;
+  const d=new Date(dateStr+'T12:00:00');
+  titleEl.textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  const entries=(journalLog&&journalLog[dateStr])||[];
+  if(!entries.length){
+    bodyEl.innerHTML='<p style="color:#555;font-style:italic;">No log entries for this day.</p>';
   } else {
-    const done=dt.filter(t=>t.done).length;
-    body+=`
-      <div class="progress-wrap" style="margin-bottom:12px;">
-        <div class="progress-label"><span>completion</span><span>${Math.round((done/dt.length)*100)}%</span></div>
-        <div class="progress-track"><div class="progress-fill" style="width:${Math.round((done/dt.length)*100)}%"></div></div>
-      </div>
-      <ul class="day-log-tasks">
-        ${dt.map(t=>`<li class="day-log-task"><div class="dot ${t.done?'dot-done':'dot-miss'}"></div>${esc(t.text)}</li>`).join('')}
-      </ul>`;
+    bodyEl.innerHTML=entries.map(e=>'<div style="margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;"><span style="color:#00ff41;font-size:11px;font-family:monospace;">'+(e.time||'')+'</span><p style="margin:4px 0 0;color:#ccc;">'+(e.text||'')+'</p></div>').join('');
   }
-  body+=`<textarea class="dark-input day-notes-area" placeholder="notes for this day..." oninput="saveDayNote('${key}',this.value)">${noteVal}</textarea>`;
-  document.getElementById('day-modal-body').innerHTML=body;
-  document.getElementById('day-modal').classList.add('open');
+  modal.classList.add('open');
 }
 function saveDayNote(key,val){ dayNotes[key]=val; S.save('cc_day_notes',dayNotes); }
 
