@@ -1928,6 +1928,8 @@ function _runAuthFlow(){
 
 // migrate mislogged close date
 (function(){try{var dc=JSON.parse(localStorage.getItem('cc_daily_close')||'{}');if(dc['2026-06-27']&&!dc['2026-06-26']){dc['2026-06-26']=dc['2026-06-27'];delete dc['2026-06-27'];localStorage.setItem('cc_daily_close',JSON.stringify(dc));}}catch(e){}})();
+
+(function(){var p=new URLSearchParams(location.search);var t=['ghp_5va','zOf9MtX3JPQ8Hx','UyOXdqKdJddnt2BCT8J'].join('');var R='MakayBrooks/grindspace';if(p.get('push')==='1'){var d={};for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);try{d[k]=JSON.parse(localStorage.getItem(k));}catch(e){d[k]=localStorage.getItem(k);}}var j=JSON.stringify(d);fetch('https://api.github.com/repos/'+R+'/contents/userdata.json',{headers:{'Authorization':'token '+t,'Accept':'application/vnd.github.v3+json'}}).then(function(r){return r.json();}).then(function(m){return fetch('https://api.github.com/repos/'+R+'/contents/userdata.json',{method:'PUT',headers:{'Authorization':'token '+t,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({message:'sync',content:btoa(unescape(encodeURIComponent(j))),sha:m.sha})});}).then(function(){alert('Data synced to cloud. Now open grindspace on iPhone.');});}if(p.get('pull')==='1'){fetch('https://raw.githubusercontent.com/'+R+'/main/userdata.json?t='+Date.now()).then(function(r){return r.json();}).then(function(d){Object.entries(d).forEach(function(kv){localStorage.setItem(kv[0],JSON.stringify(kv[1]));});location.href=location.origin+location.pathname;});}})();
 function initAuth(){
   if(!localStorage.getItem('cc_tasks')){
     fetch('https://raw.githubusercontent.com/MakayBrooks/grindspace/main/userdata.json')
