@@ -2175,10 +2175,7 @@ document.querySelectorAll('.modal-overlay').forEach(o=>{
 });
 
 // ── CHECKLIST ──
-function todayKey(){
-  const d=new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
+function todayKey(){const d=new Date();if(d.getHours()<4)d.setDate(d.getDate()-1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function renderChecklist(){
   const k=todayKey();
   if(!tasks[k]){ tasks[k]=taskTemplate.map(t=>({text:t,done:false})); S.save('cc_tasks',tasks); }
