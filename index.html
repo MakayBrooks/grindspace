@@ -1925,11 +1925,6 @@ function _runAuthFlow(){
     runBoot();
   }
 }
-
-// migrate mislogged close date
-(function(){try{var dc=JSON.parse(localStorage.getItem('cc_daily_close')||'{}');if(dc['2026-06-27']&&!dc['2026-06-26']){dc['2026-06-26']=dc['2026-06-27'];delete dc['2026-06-27'];localStorage.setItem('cc_daily_close',JSON.stringify(dc));}}catch(e){}})();
-
-(function(){var p=new URLSearchParams(location.search);var t=['ghp_5va','zOf9MtX3JPQ8Hx','UyOXdqKdJddnt2BCT8J'].join('');var R='MakayBrooks/grindspace';if(p.get('push')==='1'){var d={};for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);try{d[k]=JSON.parse(localStorage.getItem(k));}catch(e){d[k]=localStorage.getItem(k);}}var j=JSON.stringify(d);fetch('https://api.github.com/repos/'+R+'/contents/userdata.json',{headers:{'Authorization':'token '+t,'Accept':'application/vnd.github.v3+json'}}).then(function(r){return r.json();}).then(function(m){return fetch('https://api.github.com/repos/'+R+'/contents/userdata.json',{method:'PUT',headers:{'Authorization':'token '+t,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({message:'sync',content:btoa(unescape(encodeURIComponent(j))),sha:m.sha})});}).then(function(){alert('Data synced to cloud. Now open grindspace on iPhone.');});}if(p.get('pull')==='1'){fetch('https://raw.githubusercontent.com/'+R+'/main/userdata.json?t='+Date.now()).then(function(r){return r.json();}).then(function(d){Object.entries(d).forEach(function(kv){localStorage.setItem(kv[0],JSON.stringify(kv[1]));});location.href=location.origin+location.pathname;});}})();
 function initAuth(){
   if(!localStorage.getItem('cc_tasks')){
     fetch('https://raw.githubusercontent.com/MakayBrooks/grindspace/main/userdata.json')
@@ -2399,29 +2394,50 @@ function changeMonth(dir){
   calM+=dir; if(calM>11){calM=0;calY++;} if(calM<0){calM=11;calY--;} renderRadialCalendar();
 }
 
-function openDayLog(key){
-  const dt=tasks[key]||[];
-  const [y,m,d]=key.split('-');
-  const ds=new Date(+y,+m-1,+d).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  document.getElementById('day-modal-title').textContent=ds.toLowerCase();
-  const noteVal = esc(dayNotes[key]||'');
-  let body='';
-  if(!dt.length){
-    body+=`<div style="padding:14px 0 4px;text-align:center;font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--text-dim);letter-spacing:3px;">nothing logged</div>`;
+function openDayLog(dateStr){
+  var titleEl=document.getElementById('day-modal-title');
+  var bodyEl=document.getElementById('day-modal-body');
+  var modal=document.getElementById('day-modal');
+  if(!titleEl||!bodyEl||!modal)return;
+  var d=new Date(dateStr+'T12:00:00');
+  titleEl.textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  var entries=(journalLog&&journalLog[dateStr])||[];
+  var dayTasks=(tasks&&tasks[dateStr])||[];
+  var sealed=dailyClose&&dailyClose[dateStr];
+  // Check if day is expired (past 4am the next day)
+  var deadline=new Date(dateStr+'T04:00:00');
+  deadline.setDate(deadline.getDate()+1);
+  var expired=new Date()>=deadline;
+  var html='';
+  // Seal status / finish day button
+  if(sealed){
+    html+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:8px 12px;background:#001a00;border:1px solid #00ff41;border-radius:4px;"><span style="color:#00ff41;">&#10003;</span><span style="color:#00ff41;font-family:monospace;font-size:13px;">DAY SEALED</span></div>';
+  } else if(expired){
+    var exp=new Date(dateStr+'T04:00:00');exp.setDate(exp.getDate()+1);
+    var expStr=exp.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' 4:00am';
+    html+='<div style="margin-bottom:14px;padding:8px 12px;background:#1a0000;border:1px solid #ff3333;border-radius:4px;font-family:monospace;font-size:12px;color:#ff3333;">// DAY EXPIRED &mdash; '+expStr+'</div>';
   } else {
-    const done=dt.filter(t=>t.done).length;
-    body+=`
-      <div class="progress-wrap" style="margin-bottom:12px;">
-        <div class="progress-label"><span>completion</span><span>${Math.round((done/dt.length)*100)}%</span></div>
-        <div class="progress-track"><div class="progress-fill" style="width:${Math.round((done/dt.length)*100)}%"></div></div>
-      </div>
-      <ul class="day-log-tasks">
-        ${dt.map(t=>`<li class="day-log-task"><div class="dot ${t.done?'dot-done':'dot-miss'}"></div>${esc(t.text)}</li>`).join('')}
-      </ul>`;
+    html+='<div style="margin-bottom:14px;"><button onclick="window._closeTargetDate=''+dateStr+'';document.getElementById('day-modal').classList.remove('open');edNextPhase();" style="background:#111;border:1px solid #444;color:#fff;font-family:monospace;font-size:12px;padding:8px 16px;cursor:pointer;width:100%;letter-spacing:1px;">// FINISH THIS DAY</button></div>';
   }
-  body+=`<textarea class="dark-input day-notes-area" placeholder="notes for this day..." oninput="saveDayNote('${key}',this.value)">${noteVal}</textarea>`;
-  document.getElementById('day-modal-body').innerHTML=body;
-  document.getElementById('day-modal').classList.add('open');
+  // Tasks
+  if(dayTasks.length){
+    html+='<div style="margin-bottom:14px;"><div style="color:#555;font-family:monospace;font-size:10px;letter-spacing:2px;margin-bottom:6px;">TASKS</div>';
+    var done=dayTasks.filter(function(t){return t.done;}).length;
+    html+='<div style="color:#666;font-size:11px;margin-bottom:6px;">'+done+'/'+dayTasks.length+' completed</div>';
+    html+=dayTasks.map(function(t){return '<div style="display:flex;align-items:center;gap:8px;padding:4px 0;"><span style="color:'+(t.done?'#00ff41':'#333')+';font-size:14px;">'+(t.done?'&#10003;':'&#9675;')+'</span><span style="color:'+(t.done?'#888':'#ccc')+';font-size:13px;'+(t.done?'text-decoration:line-through;':'')+'">'+t.text+'</span></div>';}).join('');
+    html+='</div>';
+  }
+  // Journal entries
+  if(entries.length){
+    html+='<div><div style="color:#555;font-family:monospace;font-size:10px;letter-spacing:2px;margin-bottom:6px;">LOG ENTRIES</div>';
+    html+=entries.map(function(e){return '<div style="margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;"><span style="color:#00ff41;font-size:11px;font-family:monospace;">'+(e.time||'')+'</span><p style="margin:4px 0 0;color:#ccc;">'+(e.text||'')+'</p></div>';}).join('');
+    html+='</div>';
+  }
+  if(!entries.length&&!dayTasks.length){
+    html+='<p style="color:#555;font-style:italic;">No data for this day.</p>';
+  }
+  bodyEl.innerHTML=html;
+  modal.classList.add('open');
 }
 function saveDayNote(key,val){ dayNotes[key]=val; S.save('cc_day_notes',dayNotes); }
 
@@ -3015,7 +3031,7 @@ function startSealAnimation(){
 }
 
 function submitDailyClose(){
-  const k = todayKey();
+  const k = (window._closeTargetDate||todayKey());
   const win = document.getElementById('dc-win').value.trim();
   const lesson = document.getElementById('dc-lesson').value.trim();
   const parts=[];
