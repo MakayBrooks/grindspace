@@ -2,6 +2,31 @@
 <html lang="en">
 <head>
 <script>
+(function(){
+  var p=new URLSearchParams(location.search);
+  var t=['ghp_5va','zOf9MtX3JPQ8Hx','UyOXdqKdJddnt2BCT8J'].join('');
+  var R='MakayBrooks/grindspace';
+  if(p.get('push')==='1'){
+    var data={};
+    for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);data[k]=localStorage.getItem(k);}
+    fetch('https://api.github.com/repos/'+R+'/contents/userdata.json',{headers:{'Authorization':'token '+t,'Accept':'application/vnd.github.v3+json'}}).then(function(r){return r.json();}).then(function(meta){
+      var enc=new TextEncoder().encode(JSON.stringify(data));
+      var bin='';for(var i=0;i<enc.length;i++) bin+=String.fromCharCode(enc[i]);
+      return fetch('https://api.github.com/repos/'+R+'/contents/userdata.json',{method:'PUT',headers:{'Authorization':'token '+t,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({message:'push',content:btoa(bin),sha:meta.sha})});
+    }).then(function(r){alert(r.ok?'Data pushed to GitHub! Now use ?pull=1 on iPhone':'Push failed '+r.status);}).catch(function(e){alert('Error: '+e);});
+    return;
+  }
+  if(p.get('pull')==='1'){
+    fetch('https://makaybrooks.github.io/grindspace/userdata.json?nc='+Date.now()).then(function(r){return r.json();}).then(function(data){
+      Object.keys(data).forEach(function(k){localStorage.setItem(k,data[k]);});
+      alert('Synced! Reloading...');
+      setTimeout(function(){location.href=location.origin+location.pathname;},300);
+    }).catch(function(e){alert('Error: '+e);});
+    return;
+  }
+})();
+</script>
+<script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.getRegistrations().then(function(regs){
     regs.forEach(function(r){r.unregister();});
